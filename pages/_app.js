@@ -1,0 +1,16 @@
+import '../styles/global.css'
+import { Provider } from 'react-redux';
+import {createStore,applyMiddleware,compose} from 'redux';  
+import reducer from '../store/reducer';
+import thunk from 'redux-thunk';
+
+
+const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+
+const store = createStore(reducer,composeEnhancers(applyMiddleware(thunk))) 
+
+export default function App({ Component, pageProps }) {
+  return <Provider store={store}>
+    <Component {...pageProps} />
+  </Provider>
+}

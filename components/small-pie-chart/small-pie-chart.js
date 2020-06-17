@@ -4,31 +4,25 @@ import { ResponsivePie } from '@nivo/pie'
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-const FilesTimePieChart = ({ data /* see data tab */ }) => (
+const SmallPieChart = ({ data /* see data tab */ }) => (
     
     <ResponsivePie
         data={data}
-        margin={{ top: 0, right: 80, bottom: 40, left: 80 }}
-        innerRadius={0.5}
+        // margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
+        innerRadius={0.8}
         padAngle={0.7}
-        cornerRadius={3}
-        colors={getColor}
-        borderWidth={1}
-        borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
-        radialLabelsSkipAngle={10}
-        radialLabelsTextXOffset={15}
-        radialLabelsTextColor="#333333"
-        radialLabelsLinkOffset={-20}
-        radialLabelsLinkDiagonalLength={15}
-        radialLabelsLinkHorizontalLength={24}
-        radialLabelsLinkStrokeWidth={1}
-        radialLabelsLinkColor={{ from: 'color' }}
-        slicesLabelsSkipAngle={10}
-        slicesLabelsTextColor="#333333"
+        // cornerRadius={3}
+        colors={getSmallPiecolorsColor}
+        // borderWidth={1}
+        // borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+        // slicesLabelsSkipAngle={10}
+        // slicesLabelsTextColor="#333333"
+        radialLabelsSkipAngle={0}
         animate={true}
         motionStiffness={90}
         motionDamping={15}
         enableSlicesLabels = {false}
+        enableRadialLabels={false}
         // defs={[
         //     {
         //         id: 'dots',
@@ -99,30 +93,31 @@ const FilesTimePieChart = ({ data /* see data tab */ }) => (
         //         id: 'lines'
         //     }
         // ]}
-        legends={[
-            {
-                anchor: 'bottom',
-                direction: 'row',
-                translateY: 36,
-                itemWidth: 100,
-                itemHeight: 18,
-                itemTextColor: '#999',
-                symbolSize: 18,
-                symbolShape: 'circle',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemTextColor: '#000'
-                        }
-                    }
-                ]
-            }
-        ]}
+        // legends={[
+        //     {
+        //         anchor: 'bottom',
+        //         direction: 'row',
+        //         translateY: 36,
+        //         itemWidth: 100,
+        //         itemHeight: 18,
+        //         itemTextColor: '#999',
+        //         symbolSize: 18,
+        //         symbolShape: 'circle',
+        //         effects: [
+        //             {
+        //                 on: 'hover',
+        //                 style: {
+        //                     itemTextColor: '#000'
+        //                 }
+        //             }
+        //         ]
+        //     }
+        // ]}
     />
 )
- 
-const colors = { 'תקין': 'green', 'קרוב לחריגה': 'orange', 'חורג': 'red' }
-const getColor = data => colors[data.label]
 
-export default FilesTimePieChart;
+const colors = { 'mainColor': '#0000FF', 'remainingColor': '#fffff' }
+
+const getSmallPiecolorsColor = data => colors[data.color]
+
+export default SmallPieChart;

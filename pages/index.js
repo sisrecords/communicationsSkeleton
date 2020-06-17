@@ -6,29 +6,36 @@ import * as actions from '../store/actionCreators';
 import Button from '@material-ui/core/Button';
 import FilesTimePieChart from '../components/pie-chart/files-time-pie-chart';
 import LineChart from '../components/line-chart/line-chart'
-const Home = (props) => {
+import NotificationTable from '../components/notification-table/notification-table';
+import MessageTable from '../components/message-table/message-table';
+import SmallPieChart from '../components/small-pie-chart/small-pie-chart';
+const Home = (props) => {  
   return (
       <div className={utilStyles.gridContainer}>
-        <div className={utilStyles.item1}>
-          התראות
+        <div className={utilStyles.notificationTable}>
+          <NotificationTable  rowsData = {notificationsData}></NotificationTable>
         </div>
-        <div className={utilStyles.item2}>
+        <div className={utilStyles.lineChart}>
           <LineChart data={lineData}></LineChart>
         </div>
-        <div className={utilStyles.item3}>
+        <div className={utilStyles.pieChart}>
           <FilesTimePieChart data={pieData}></FilesTimePieChart>
         </div>  
-        <div className={utilStyles.item4}>
-          הודsadasdעות
+        <div className={utilStyles.messagesTable}>
+        <MessageTable rowsData = {messagesData}></MessageTable>
         </div>
-        <div className={utilStyles.item5}>
-        טבלה
+        <div className={utilStyles.mainTable}>
+        טבלה - need to implement
         </div>
-        <div className={utilStyles.item6}>
-        שיטת התקשרות
+        <div className={utilStyles.smallPieCharts}>
+        <SmallPieChart data={smallPieChartData}></SmallPieChart>
+         <div className={utilStyles.smallPieChartNum}>
+         {smallPieChartData[0].value}%
+         </div> 
         </div>
-        <div className={utilStyles.item7}>
+        <div className={utilStyles.tagsContainer}>
         תגיות
+        <div>no need to implement for now</div>
         </div>
       {
         //store section
@@ -71,24 +78,75 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
+const notificationsData = [
+  {
+    "id":"1",
+    "action":2,//1-approved,2-transfered to clearification,...
+    "name":"צבי משה",
+    "subject":"ניסוי מכם",
+    "subjectNum":"36875",
+    "actionDesctiption":"הועבר לבירור לשמעון שמעוני, ק״פט",
+    "timeStamp":"לפני 7 דקות"
+  },
+  {
+    "id":"2",
+    "action":1,//1-approved,2-transfered to clearification,...
+    "name":"אבי הכהן",
+    "subject":"יצירת ניסויים",
+    "subjectNum":"12345",
+    "actionDesctiption":"אישור תחנה, הועבר לשי חן, כלכלן",
+    "timeStamp":"לפני 38 דקות"
+  },
+]
+
+const messagesData = [
+  {
+    "id":"1",
+    "action":2,//1-approved,2-transfered to clearification,...
+    "name":"אייל בנימין",
+    "subject":"יצירת מטוסי לחימה",
+    "subjectNum":"36875",
+    "actionDesctiption":"האם אתה בטוח שאלה",
+    "timeStamp":"לפני 7 דקות"
+  },
+  {
+    "id":"2",
+    "action":1,//1-approved,2-transfered to clearification,...
+    "name":"ישראל ישראלי",
+    "subject":"יצירת מכם 2 ",
+    "subjectNum":"12345",
+    "actionDesctiption":"אני לא חושב שזה אמור",
+    "timeStamp":"לפני 38 דקות"
+  },
+]
+const smallPieChartData = [
+  {
+    "id": "82",
+    "value": 82,
+    "color":"mainColor"
+  },
+  {
+    "id": "28",
+    "value": 28,
+    "color":"remainingColor"
+  }
+]
+
 const pieData = [
   {
     "id": "15",
     "label": "תקין",
     "value": 15,
-    "color": "rgb(255, 0, 0))"
   },
   {
     "id": "8",
     "label": "קרוב לחריגה",
     "value": 8,
-    "color": "rgb(0, 204, 0)"
   },
   {
     "id": "2",
     "label": "חורג",
     "value": 2,
-    "color": "rgb(255, 0, 0)"
   },
 ]
 

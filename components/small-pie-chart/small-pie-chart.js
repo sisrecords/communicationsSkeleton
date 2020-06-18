@@ -8,7 +8,7 @@ const SmallPieChart = ({ data /* see data tab */ }) => (
     
     <ResponsivePie
         data={data}
-        // margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
+        margin={{ top: 10, right: 10, bottom: 0, left: 10 }}
         innerRadius={0.8}
         padAngle={0.7}
         // cornerRadius={3}

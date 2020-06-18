@@ -17,12 +17,22 @@
   border-radius: 10px;
 }
 
+.rightHeadline{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .notificationTable {
   grid-column: 1;
   grid-row: 1/4;
 }
 
 .lineChart {
+  position: relative;
   height: 100%;
   grid-column: 2;
   grid-row: 1/3;
@@ -30,6 +40,7 @@
 }
 
 .pieChart {
+  position: relative;
   height: 100%;
   grid-column: 3;
   grid-row: 1/3;
@@ -46,11 +57,23 @@
   grid-row: 3/7;
 }
 
-.smallPieCharts {
+.smallPieChartsComponentContainer {
+  height: 100%;
+  display: flex;
   position: relative;
-  height: 120px;
   grid-column: 3;
   grid-row: 3;
+}
+.pieDataContainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.singlePieChartContainer{ 
+  height: 100px;
+  position: relative;
 }
 
 .smallPieChartNum {
@@ -60,6 +83,7 @@
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
+
 
 .tagsContainer {
   grid-column: 3;

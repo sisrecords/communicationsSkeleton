@@ -4,11 +4,11 @@ import { ResponsivePie } from '@nivo/pie'
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-const FilesTimePieChart = ({ data /* see data tab */ }) => (
+const BigPieChart = ({ data /* see data tab */ }) => (
     
     <ResponsivePie
         data={data}
-        margin={{ top: 0, right: 80, bottom: 40, left: 80 }}
+        margin={{ top: 10, right: 80, bottom: 40, left: 80 }}
         innerRadius={0.5}
         padAngle={0.7}
         cornerRadius={3}
@@ -125,4 +125,4 @@ const FilesTimePieChart = ({ data /* see data tab */ }) => (
 const colors = { 'תקין': 'green', 'קרוב לחריגה': 'orange', 'חורג': 'red' }
 const getColor = data => colors[data.label]
 
-export default FilesTimePieChart;
+export default BigPieChart;

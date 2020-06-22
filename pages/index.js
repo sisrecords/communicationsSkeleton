@@ -9,11 +9,12 @@ import LineChart from '../components/line-chart/line-chart'
 import NotificationTable from '../components/notification-table/notification-table';
 import MessageTable from '../components/message-table/message-table';
 import SmallPieChart from '../components/small-pie-chart/small-pie-chart';
+import MaterialTableDemo from '../components/main-table/main-table';
 const Home = (props) => {
   return (
     <div className={utilStyles.gridContainer}>
       <div className={utilStyles.notificationTable}>
-        <NotificationTable rowsData={notificationsData}></NotificationTable>
+        <NotificationTable key="2" rowsData={notificationsData}></NotificationTable>
       </div>
       <div className={utilStyles.lineChart}>
         <div className={utilStyles.rightHeadline}>מצב טיפול בתיקים בחודש החולף</div>
@@ -24,10 +25,10 @@ const Home = (props) => {
         <BigPieChart data={pieData}></BigPieChart>
       </div>
       <div className={utilStyles.messagesTable}>
-        <MessageTable rowsData={messagesData}></MessageTable>
+        <MessageTable key="1" rowsData={messagesData}></MessageTable>
       </div>
-      <div className={utilStyles.mainTable}>
-        טבלה - need to implement
+      <div className={utilStyles.mainTableContainer}>
+        <MaterialTableDemo className={utilStyles.mainTable}></MaterialTableDemo>
         </div>
       <div className={utilStyles.smallPieChartsComponentContainer}>
         <div className={utilStyles.rightHeadline}>שיטת התקשרות</div>

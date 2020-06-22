@@ -9,7 +9,7 @@ const NotificationTable = ({rowsData}) =>{
   }
   else{
     rowsData.map(row =>{
-      rowsArray.push(<NotificationTableRow singleRowData ={row}></NotificationTableRow>);
+      rowsArray.push(<NotificationTableRow key={row.id} singleRowData ={row}></NotificationTableRow>);
     })
   }
 

@@ -8,12 +8,12 @@ const SmallPieChart = ({ data /* see data tab */ }) => (
     
     <ResponsivePie
         data={data}
-        margin={{ top: 10, right: 10, bottom: 0, left: 10 }}
+        margin={{ top: 10, right: 10, bottom: 5, left: 10 }}
         innerRadius={0.8}
         padAngle={0.7}
         // cornerRadius={3}
         colors={getSmallPiecolorsColor}
-        // borderWidth={1}
+        borderWidth={1}
         // borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
         // slicesLabelsSkipAngle={10}
         // slicesLabelsTextColor="#333333"
@@ -116,7 +116,7 @@ const SmallPieChart = ({ data /* see data tab */ }) => (
     />
 )
 
-const colors = { 'mainColor': '#0000FF', 'remainingColor': '#fffff' }
+const colors = { 'mainColor': '#0000FF', 'remainingColor': '#A9A9A9' }
 
 const getSmallPiecolorsColor = data => colors[data.color]
 

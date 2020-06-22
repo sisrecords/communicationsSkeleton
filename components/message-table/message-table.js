@@ -9,7 +9,7 @@ const MessageTable = ({rowsData}) =>{
   }
   else{
     rowsData.map(row =>{
-      rowsArray.push(<MessageTableRow singleRowData ={row}></MessageTableRow>);
+      rowsArray.push(<MessageTableRow key={row.id} singleRowData ={row}></MessageTableRow>);
     })
   }
 

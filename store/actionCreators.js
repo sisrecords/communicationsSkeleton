@@ -5,13 +5,11 @@ import axios from 'axios';
 //     baseURL: "https://react-my-burger-25821.firebaseio.com/"
 // });
 
-
-
 export const add = () =>{
     return {
         type: actionsTypes.ADD
     }
-}
+} 
 
 export const remove = () =>{
     return {

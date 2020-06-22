@@ -2,7 +2,7 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import TablePagination from '@material-ui/core/TablePagination';
 import { forwardRef } from 'react';
-import AutoSizer from 'react-virtualized-auto-sizer';  
+import AutoSizer from 'react-virtualized-auto-sizer';
 
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
@@ -44,23 +44,22 @@ const tableIcons = {
 export default function MaterialTableDemo() {
     const [state, setState] = React.useState({
         columns: [
-            { title: 'Name', field: 'name' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Surname', field: 'surname' },
+            { title: 'מס׳', field: 'surname' },
+            { title: 'תיאור', field: 'surname' },
+            { title: 'פרוייקט', field: 'birthYear', type: 'numeric' },
+            { title: 'מס ספק', field: 'birthYear', type: 'numeric' },
+            { title: 'שם ספק', field: 'surname' },
+            { title: 'סוג', field: 'surname' },
+            { title: 'סטטוס', field: 'surname' },
+            { title: 'גוף דורש', field: 'surname' },
+            { title: 'סיווג', field: 'surname' },
+            { title: 'מחלקה', field: 'surname' },
+            { title: 'ענף', field: 'surname' },
+            { title: 'מטבע', field: 'surname' },
+            { title: 'סכום', field: 'surname' },
+            { title: 'ימים שנותרו', field: 'name' },
 
-            { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-            {
-                title: 'Birth Place',
-                field: 'birthCity',
-                lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-            },
+
         ],
         data: [
             { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
@@ -84,27 +83,41 @@ export default function MaterialTableDemo() {
     });
     return (
         <AutoSizer>
-        {({ height, width }) => {
-            console.log(`Height: ${height} | Width: ${width}`);
-            const pageSize = Math.floor((height - 192) / 48);
-            console.log(`Page Size: ${pageSize}`);
+            {({ height, width }) => {
+                console.log(`Height: ${height} | Width: ${width}`);
+                const pageSize = Math.floor((height - 192) / 48);
+                console.log(`Page Size: ${pageSize}`);
 
-            return (
-            <div style={{ height: `${height}px`, width: `${width}px`, overflowY: 'auto' }}>
-                <MaterialTable
-                columns={state.columns}
-                data={state.data}
-                options={{
-                    pageSize: pageSize-1,
-                    pageSizeOptions: [],
-                    toolbar: true,
-                    paging: true
-                }}
-                icons={tableIcons}
-                ></MaterialTable>
-            </div>
-            );
-        }}
+                return (
+                    <div style={{ height: `${height}px`, width: `${width}px`, overflowY: 'auto', direction: "rtl" }}>
+                        <MaterialTable
+                            columns={state.columns}
+                            data={state.data}
+                            options={{
+                                pageSize: pageSize - 1,
+                                pageSizeOptions: [],
+                                toolbar: true,
+                                paging: true
+                            }}
+                            icons={tableIcons}
+
+                            components={{
+                                Pagination: props => (
+                                    <TablePagination
+                                        {...props}
+                                        style={{direction:"ltr"}}
+                                    //rowsPerPageOptions={0}
+                                    //rowsPerPage={8}
+                                    //count={10}
+                                    />)
+                            }}
+
+
+
+                        ></MaterialTable>
+                    </div>
+                );
+            }}
         </AutoSizer>
 
 
@@ -129,9 +142,9 @@ export default function MaterialTableDemo() {
         //             />)
         //     }}
         //     />
-            );
-        }
-        
+    );
+}
+
                 //   editable={{
                 //     onRowAdd: (newData) =>
                 //       new Promise((resolve) => {

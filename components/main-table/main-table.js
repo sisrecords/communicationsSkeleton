@@ -95,7 +95,7 @@ export default function MaterialTableDemo() {
                 columns={state.columns}
                 data={state.data}
                 options={{
-                    pageSize: pageSize,
+                    pageSize: pageSize-1,
                     pageSizeOptions: [],
                     toolbar: true,
                     paging: true

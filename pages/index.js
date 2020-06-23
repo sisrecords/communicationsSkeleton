@@ -26,7 +26,7 @@ const Home = (props) => {
     <div className={utilStyles.gridContainer}>
       <div className={utilStyles.notificationTable}>
       <button onClick={props.onInitNotificationsTable}>get notification data</button>
-        <NotificationTable key="2" rowsData={props.notificationsData}></NotificationTable>
+        <NotificationTable key="2" rowsData={props.notificationsDataProp}></NotificationTable>
       </div>
       <div className={utilStyles.lineChart}>
         <div className={utilStyles.rightHeadline}>מצב טיפול בתיקים בחודש החולף</div>
@@ -37,7 +37,8 @@ const Home = (props) => {
         <BigPieChart data={pieData}></BigPieChart>
       </div>
       <div className={utilStyles.messagesTable}>
-        <MessageTable key="1" rowsData={messagesData}></MessageTable>
+      <button onClick={props.onInitMessagesTable}>get notification data</button>
+        <MessageTable key="1" rowsData={props.messagesDataProp}></MessageTable>
       </div>
       <div className={utilStyles.mainTableContainer}>
         <MaterialTableDemo className={utilStyles.mainTable}></MaterialTableDemo>
@@ -89,7 +90,8 @@ const Home = (props) => {
 
 const mapStateToProps = state => {
   return {
-    notificationsData: state.notificationsTableData
+    notificationsDataProp: state.notificationsTableData,
+    messagesDataProp: state.messagesTableData
   }
 }
 
@@ -97,53 +99,13 @@ const mapDispatchToProps = dispatch => {
   return {
     //onPostAdded: () => dispatch(actions.add()),
     //onPostRemoved: () => dispatch(actions.remove()),
-    onInitNotificationsTable: () => dispatch(actions.initNotificationTable())
+    onInitNotificationsTable: () => dispatch(actions.initNotificationTable()),
+    onInitMessagesTable:()=> dispatch(actions.initMessagesTable())
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
-// const notificationsData = [
-//   {
-//     "id": "1",
-//     "action": 2,//1-approved,2-transfered to clearification,...
-//     "name": "צבי משה",
-//     "subject": "ניסוי מכם",
-//     "subjectNum": "36875",
-//     "actionDesctiption": "הועבר לבירור לשמעון שמעוני, ק״פט",
-//     "timeStamp": "לפני 7 דקות"
-//   },
-//   {
-//     "id": "2",
-//     "action": 1,//1-approved,2-transfered to clearification,...
-//     "name": "אבי הכהן",
-//     "subject": "יצירת ניסויים",
-//     "subjectNum": "12345",
-//     "actionDesctiption": "אישור תחנה, הועבר לשי חן, כלכלן",
-//     "timeStamp": "לפני 38 דקות"
-//   },
-// ]
-
-const messagesData = [
-  {
-    "id": "1",
-    "action": 2,//1-approved,2-transfered to clearification,...
-    "name": "אייל בנימין",
-    "subject": "יצירת מטוסי לחימה",
-    "subjectNum": "36875",
-    "actionDesctiption": "האם אתה בטוח שאלה",
-    "timeStamp": "לפני 7 דקות"
-  },
-  {
-    "id": "2",
-    "action": 1,//1-approved,2-transfered to clearification,...
-    "name": "ישראל ישראלי",
-    "subject": "יצירת מכם 2 ",
-    "subjectNum": "12345",
-    "actionDesctiption": "אני לא חושב שזה אמור",
-    "timeStamp": "לפני 38 דקות"
-  },
-]
 const smallPieChartData = [
   [
     {

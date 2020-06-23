@@ -2,15 +2,13 @@
 import MessageTableRow from './message-table-row/message-table-row';
 
 const MessageTable = ({rowsData}) =>{
-
-  debugger;
   let rowsArray =[];
   if (rowsData == null) {
     rowsArray = null;
   }
   else{
-    if (rowsData.notificationsTableData) {
-      rowsData.notificationsTableData.map(row =>{
+    if (rowsData) {
+      rowsData.map(row =>{
         rowsArray.push(<MessageTableRow key={row.id} singleRowData ={row}></MessageTableRow>);
       })
     }

@@ -3,14 +3,17 @@ import MessageTableRow from './message-table-row/message-table-row';
 
 const MessageTable = ({rowsData}) =>{
 
+  debugger;
   let rowsArray =[];
-  if (!rowsData) {
+  if (rowsData == null) {
     rowsArray = null;
   }
   else{
-    rowsData.map(row =>{
-      rowsArray.push(<MessageTableRow key={row.id} singleRowData ={row}></MessageTableRow>);
-    })
+    if (rowsData.notificationsTableData) {
+      rowsData.notificationsTableData.map(row =>{
+        rowsArray.push(<MessageTableRow key={row.id} singleRowData ={row}></MessageTableRow>);
+      })
+    }
   }
 
   return (

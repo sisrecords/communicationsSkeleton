@@ -10,11 +10,23 @@ import NotificationTable from '../components/notification-table/notification-tab
 import MessageTable from '../components/message-table/message-table';
 import SmallPieChart from '../components/small-pie-chart/small-pie-chart';
 import MaterialTableDemo from '../components/main-table/main-table';
+import rootReducer from '../store/reducer'
+
 const Home = (props) => {
+
+  // const state ={
+  //   notificationsTableData:null
+  // }
+
+  // const initNotificationTable = () =>{
+  //   onInitNotificationsTable();
+  // }
+
   return (
     <div className={utilStyles.gridContainer}>
       <div className={utilStyles.notificationTable}>
-        <NotificationTable key="2" rowsData={notificationsData}></NotificationTable>
+      <button onClick={props.onInitNotificationsTable}>get notification data</button>
+        <NotificationTable key="2" rowsData={props.notificationsData}></NotificationTable>
       </div>
       <div className={utilStyles.lineChart}>
         <div className={utilStyles.rightHeadline}>מצב טיפול בתיקים בחודש החולף</div>
@@ -77,40 +89,40 @@ const Home = (props) => {
 
 const mapStateToProps = state => {
   return {
-    numOfPosts: state.numOfPosts
+    notificationsData: state.notificationsTableData
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onPostAdded: () => dispatch(actions.add()),
-    onPostRemoved: () => dispatch(actions.remove()),
-    onInitPosts: () => dispatch(actions.initPosts())
+    //onPostAdded: () => dispatch(actions.add()),
+    //onPostRemoved: () => dispatch(actions.remove()),
+    onInitNotificationsTable: () => dispatch(actions.initNotificationTable())
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
-const notificationsData = [
-  {
-    "id": "1",
-    "action": 2,//1-approved,2-transfered to clearification,...
-    "name": "צבי משה",
-    "subject": "ניסוי מכם",
-    "subjectNum": "36875",
-    "actionDesctiption": "הועבר לבירור לשמעון שמעוני, ק״פט",
-    "timeStamp": "לפני 7 דקות"
-  },
-  {
-    "id": "2",
-    "action": 1,//1-approved,2-transfered to clearification,...
-    "name": "אבי הכהן",
-    "subject": "יצירת ניסויים",
-    "subjectNum": "12345",
-    "actionDesctiption": "אישור תחנה, הועבר לשי חן, כלכלן",
-    "timeStamp": "לפני 38 דקות"
-  },
-]
+// const notificationsData = [
+//   {
+//     "id": "1",
+//     "action": 2,//1-approved,2-transfered to clearification,...
+//     "name": "צבי משה",
+//     "subject": "ניסוי מכם",
+//     "subjectNum": "36875",
+//     "actionDesctiption": "הועבר לבירור לשמעון שמעוני, ק״פט",
+//     "timeStamp": "לפני 7 דקות"
+//   },
+//   {
+//     "id": "2",
+//     "action": 1,//1-approved,2-transfered to clearification,...
+//     "name": "אבי הכהן",
+//     "subject": "יצירת ניסויים",
+//     "subjectNum": "12345",
+//     "actionDesctiption": "אישור תחנה, הועבר לשי חן, כלכלן",
+//     "timeStamp": "לפני 38 דקות"
+//   },
+// ]
 
 const messagesData = [
   {

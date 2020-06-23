@@ -3,14 +3,18 @@ import NotificationTableRow from './notification-row/notification-row';
 
 const NotificationTable = ({rowsData}) =>{
 
+  debugger;
   let rowsArray =[];
-  if (!rowsData) {
+  if (rowsData == null) {
     rowsArray = null;
   }
   else{
-    rowsData.map(row =>{
-      rowsArray.push(<NotificationTableRow key={row.id} singleRowData ={row}></NotificationTableRow>);
-    })
+    if (rowsData.notificationsTableData) {
+      debugger;
+      rowsData.notificationsTableData.map(row =>{
+        rowsArray.push(<NotificationTableRow key={row.id} singleRowData ={row}></NotificationTableRow>);
+      }) 
+    }
   }
 
   return (

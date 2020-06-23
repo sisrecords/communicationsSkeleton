@@ -14,6 +14,7 @@ export const setMessagesTable = (messagesTableData) =>{
   }
 }
 export const initNotificationTable = () =>{
+  debugger;
     return dispatch => {
         //get asychronosly the notifications from db
         let response = [

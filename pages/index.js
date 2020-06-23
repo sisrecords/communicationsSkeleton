@@ -10,7 +10,7 @@ import NotificationTable from '../components/notification-table/notification-tab
 import MessageTable from '../components/message-table/message-table';
 import SmallPieChart from '../components/small-pie-chart/small-pie-chart';
 import MaterialTableDemo from '../components/main-table/main-table';
-import rootReducer from '../store/reducer'
+import rootReducer from '../store/messagesReducer'
 
 const Home = (props) => {
 
@@ -89,13 +89,15 @@ const Home = (props) => {
 
 
 const mapStateToProps = state => {
+  debugger;
   return {
-    notificationsDataProp: state.notificationsTableData,
-    messagesDataProp: state.messagesTableData
+    notificationsDataProp: state.notificationsReducer.notificationsTableData,
+    messagesDataProp: state.messagesReducer.messagesTableData
   }
 }
 
 const mapDispatchToProps = dispatch => {
+  debugger;
   return {
     //onPostAdded: () => dispatch(actions.add()),
     //onPostRemoved: () => dispatch(actions.remove()),

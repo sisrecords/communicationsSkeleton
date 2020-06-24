@@ -122,7 +122,7 @@ const initialState = {
 
 const lineChartReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.SET_MESSAGE_TABLE:
+        case actionTypes.SET_LINE_CHART:
             return {
                 ...state,
                 lineChartData: action.lineData

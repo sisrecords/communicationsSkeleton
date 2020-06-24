@@ -28,15 +28,23 @@ export const setPieChartData = (pieChartData) =>{
   }
 }
 
-export const setLineChartData = (LineChartData) =>{
+export const setLineChartData = (lineChartData) =>{
   return{
     type: actionsTypes.SET_LINE_CHART,
-    lineData:LineChartData
+    lineData:lineChartData
   }
 }
 
+export const setMainTableData = (mainTableData) =>{
+  return{
+    type: actionsTypes.SET_MAIN_TABLE,
+    tableData:mainTableData
+  }
+}
+
+
+
 export const initNotificationTable = () =>{
-  debugger;
     return dispatch => {
         //get asychronosly the notifications from db
         let response = [
@@ -85,7 +93,7 @@ export const initMessagesTable = () =>{
             "subjectNum": "12345",
             "actionDesctiption": "אני לא חושב שזה אמור",
             "timeStamp": "לפני 38 דקות"
-          },
+          }
         ]
       dispatch(setMessagesTable(response))
   }

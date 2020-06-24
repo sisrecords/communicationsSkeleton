@@ -15,4 +15,7 @@ export const SET_PIE_CHART = 'SET_PIE_CHART';
 
 //line chart actions
 export const SET_LINE_CHART = 'SET_LINE_CHART';
+
+//main table actions
+export const SET_MAIN_TABLE = 'SET_MAIN_TABLE'
     

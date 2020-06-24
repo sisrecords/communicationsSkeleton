@@ -9,8 +9,7 @@ import LineChart from '../components/line-chart/line-chart'
 import NotificationTable from '../components/notification-table/notification-table';
 import MessageTable from '../components/message-table/message-table';
 import SmallPieChart from '../components/small-pie-chart/small-pie-chart';
-import MaterialTableDemo from '../components/main-table/main-table';
-import rootReducer from '../store/messagesReducer'
+import MaterialTable from '../components/main-table/main-table';
 
 const Home = (props) => {
 
@@ -41,7 +40,7 @@ const Home = (props) => {
       <button onClick={props.onInitMessagesTable}>get</button>
       </div>
       <div className={utilStyles.mainTableContainer}>
-        <MaterialTableDemo className={utilStyles.mainTable}></MaterialTableDemo>
+        <MaterialTable data={props.mainTableDataProp} ></MaterialTable>
         </div>
       <div className={utilStyles.smallPieChartsComponentContainer}>
         <div className={utilStyles.rightHeadline}>שיטת התקשרות</div>
@@ -89,18 +88,17 @@ const Home = (props) => {
 
 
 const mapStateToProps = state => {
-  debugger;
   return {
     notificationsDataProp: state.notificationsReducer.notificationsTableData,
     messagesDataProp: state.messagesReducer.messagesTableData,
     smallPieDataProp: state.smallPieChartsReducer.smallPieChartsData,
     pieChartDataProp: state.pieChartReducer.pieChartData,
-    lineChartDataProp: state.lineChartReducer.lineChartData
+    lineChartDataProp: state.lineChartReducer.lineChartData,
+    mainTableDataProp: state.mainTableReducer.mainTableData
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  debugger;
   return {
     onInitNotificationsTable: () => dispatch(actions.initNotificationTable()),
     onInitMessagesTable:()=> dispatch(actions.initMessagesTable())
@@ -108,3 +106,17 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+
+// const data = [
+//     { name: 'adam', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+//   ]
+

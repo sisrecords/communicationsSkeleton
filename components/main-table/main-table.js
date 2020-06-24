@@ -41,7 +41,7 @@ const tableIcons = {
 };
 
 
-export default function MaterialTableDemo() {
+export default function MaterialTableDemo({data}) {
     const [state, setState] = React.useState({
         columns: [
             { title: 'מס׳', field: 'surname' },
@@ -59,19 +59,7 @@ export default function MaterialTableDemo() {
             { title: 'סכום', field: 'surname' },
             { title: 'ימים שנותרו', field: 'name' },
 
-
-        ],
-        data: [
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-        ],
+        ]
     });
     return (
         <AutoSizer>
@@ -84,15 +72,19 @@ export default function MaterialTableDemo() {
                     <div style={{ height: `${height}px`, width: `${width}px`, overflowY: 'auto', direction: "rtl" }}>
                         <MaterialTable
                             columns={state.columns}
-                            data={state.data}
+                            data={data}
                             options={{
-                                pageSize: pageSize - 1,
+                                pageSize: pageSize,
                                 pageSizeOptions: [],
                                 toolbar: true,
-                                paging: true
+                                paging: true,
+                                // rowStyle:{
+                                //     height:'55px'
+                                // }
+
                             }}
                             icons={tableIcons}
-
+                            
                             components={{
                                 Pagination: props => (
                                     <TablePagination

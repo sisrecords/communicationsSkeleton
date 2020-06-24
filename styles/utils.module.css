@@ -55,17 +55,11 @@
 }
 
 .mainTableContainer {
-  position: relative;
+  height: 100%;
+  /* position: relative; */
   grid-column: 2/4;
   grid-row: 3/7;
   padding: 0px !important;
-}
-.mainTableContainer > div{
-  position: absolute !important;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  top: 0;
 }
 
 .smallPieChartsComponentContainer {

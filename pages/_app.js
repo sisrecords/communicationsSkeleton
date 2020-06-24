@@ -7,14 +7,15 @@ import messagesReducer from '../store/messagesReducer';
 import smallPieChartsReducer from '../store/smallPieChartsReducer';
 import pieChartReducer from '../store/pieChartReducer';
 import lineChartReducer from '../store/lineChartReducer';
-
+import mainTableReducer from '../store/mainTableReducer';
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 const rootReducer = combineReducers({
   notificationsReducer,
   messagesReducer,
   smallPieChartsReducer,
   pieChartReducer,
-  lineChartReducer
+  lineChartReducer,
+  mainTableReducer
   })
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 

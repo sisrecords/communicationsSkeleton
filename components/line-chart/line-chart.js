@@ -9,7 +9,7 @@ const LineChart = ({ data /* see data tab */ }) => (
         data={data}
         margin={{ top: 20, right: 110, bottom: 20, left: 40 }}
         xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: '0', max: '4', stacked: false, reverse: false }}
+        yScale={{ type: 'linear', min: 0, max:4, stacked: false, reverse: false }}
         curve="natural"
         axisTop={null}
         axisRight={null}

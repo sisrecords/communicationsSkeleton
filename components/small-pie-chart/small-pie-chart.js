@@ -5,7 +5,6 @@ import { ResponsivePie } from '@nivo/pie'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 const SmallPieChart = ({ data /* see data tab */ }) => (
-    
     <ResponsivePie
         data={data}
         margin={{ top: 10, right: 10, bottom: 5, left: 10 }}

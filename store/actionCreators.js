@@ -13,6 +13,28 @@ export const setMessagesTable = (messagesTableData) =>{
     messages:messagesTableData
   }
 }
+
+export const setSmallPieData = (smallPiesData) =>{
+  return{
+    type: actionsTypes.SET_SMALL_PIE_CHARTS,
+    piesData:smallPiesData
+  }
+}
+
+export const setPieChartData = (pieChartData) =>{
+  return{
+    type: actionsTypes.SET_SMALL_PIE_CHARTS,
+    pieData:pieChartData
+  }
+}
+
+export const setLineChartData = (LineChartData) =>{
+  return{
+    type: actionsTypes.SET_LINE_CHART,
+    lineData:LineChartData
+  }
+}
+
 export const initNotificationTable = () =>{
   debugger;
     return dispatch => {

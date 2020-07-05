@@ -57,8 +57,7 @@ export default function MaterialTableDemo({data}) {
             { title: 'ענף', field: 'surname' },
             { title: 'מטבע', field: 'surname' },
             { title: 'סכום', field: 'surname' },
-            { title: 'ימים שנותרו', field: 'name' },
-
+            { title: 'ימים שנותרו', field: 'name' }
         ]
     });
     return (
@@ -74,6 +73,8 @@ export default function MaterialTableDemo({data}) {
                             columns={state.columns}
                             data={data}
                             options={{
+                                showTitle:false,
+                                search:false,
                                 pageSize: pageSize,
                                 pageSizeOptions: [],
                                 toolbar: true,

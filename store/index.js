@@ -4,6 +4,7 @@ import smallPieChartsReducer from '../store/reducers/smallPieChartsReducer';
 import pieChartReducer from '../store/reducers/pieChartReducer';
 import lineChartReducer from '../store/reducers/lineChartReducer';
 import mainTableReducer from '../store/reducers/mainTableReducer';
+import tagsReducer from '../store/reducers/tagsReducer';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     smallPieChartsReducer,
     pieChartReducer,
     lineChartReducer,
-    mainTableReducer
+    mainTableReducer,
+    tagsReducer
 })
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 

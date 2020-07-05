@@ -42,6 +42,19 @@ export const setMainTableData = (mainTableData) =>{
   }
 }
 
+export const setTags = (tagsData) =>{
+  return{
+    type: actionsTypes.SET_TAGS,
+    tags:tagsData
+  }
+}
+
+export const setSuggestionTags = (suggestionData) =>{
+  return{
+    type: actionsTypes.SET_SUGGESTIONS_TAGS,
+    suggestions:suggestionData
+  }
+}
 
 
 export const initNotificationTable = () =>{

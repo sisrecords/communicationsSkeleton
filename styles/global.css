@@ -31,9 +31,12 @@ img {
   max-width: 100%;
   display: block;
 } */
-
+/* 
 button{
-  /* border-radius: 10%; */
   width:30px;
   height: 20px;
+} */
+
+.MuiToolbar-root .MuiToolbar-regular .MTableToolbar-root-61 .MuiToolbar-gutters{
+  min-height: 0 !important;
 }

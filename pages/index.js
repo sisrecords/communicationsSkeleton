@@ -10,22 +10,15 @@ import NotificationTable from '../components/notification-table/notification-tab
 import MessageTable from '../components/message-table/message-table';
 import SmallPieChart from '../components/small-pie-chart/small-pie-chart';
 import MaterialTable from '../components/main-table/main-table';
-
+import TagSearch from '../components/tag-search/tag-search';
+import TagsInput from '../components/tag-search/tag-search-2';
+import TagSearch3 from '../components/tag-search/tag-search-3';
 const Home = (props) => {
-
-  // const state ={
-  //   notificationsTableData:null
-  // }
-
-  // const initNotificationTable = () =>{
-  //   onInitNotificationsTable();
-  // }
-
   return (
     <div className={utilStyles.gridContainer}>
       <div className={utilStyles.notificationTable}>
         <NotificationTable key="2" rowsData={props.notificationsDataProp}></NotificationTable>
-      <button onClick={props.onInitNotificationsTable}>get</button>
+        <button onClick={props.onInitNotificationsTable}>get</button>
       </div>
       <div className={utilStyles.lineChart}>
         <div className={utilStyles.rightHeadline}>מצב טיפול בתיקים בחודש החולף</div>
@@ -37,11 +30,16 @@ const Home = (props) => {
       </div>
       <div className={utilStyles.messagesTable}>
         <MessageTable key="1" rowsData={props.messagesDataProp}></MessageTable>
-      <button onClick={props.onInitMessagesTable}>get</button>
+        <button onClick={props.onInitMessagesTable}>get</button>
       </div>
       <div className={utilStyles.mainTableContainer}>
-        <MaterialTable data={props.mainTableDataProp} ></MaterialTable>
+        <div className={utilStyles.tagSearchContainer}>
+          {/* <TagSearch tags={props.tagsDataProp} suggestions={props.suggestionsDataProp}></TagSearch> */}
+          {/* <TagsInput  tags={['Nodejs', 'MongoDB']}></TagsInput> */}
+          <TagSearch3></TagSearch3>
         </div>
+        <MaterialTable data={props.mainTableDataProp} ></MaterialTable>
+      </div>
       <div className={utilStyles.smallPieChartsComponentContainer}>
         <div className={utilStyles.rightHeadline}>שיטת התקשרות</div>
         <div className={utilStyles.pieDataContainer}>
@@ -63,7 +61,7 @@ const Home = (props) => {
             <SmallPieChart data={props.smallPieDataProp[1]}></SmallPieChart>
           </div>
           <div className={utilStyles.smallPieChartHeadline}>
-          fix
+            fix
           </div>
         </div>
         <div className={utilStyles.pieDataContainer}>
@@ -94,14 +92,16 @@ const mapStateToProps = state => {
     smallPieDataProp: state.smallPieChartsReducer.smallPieChartsData,
     pieChartDataProp: state.pieChartReducer.pieChartData,
     lineChartDataProp: state.lineChartReducer.lineChartData,
-    mainTableDataProp: state.mainTableReducer.mainTableData
+    mainTableDataProp: state.mainTableReducer.mainTableData,
+    tagsDataProp: state.tagsReducer.tags,
+    suggestionsDataProp:state.tagsReducer.suggestions
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onInitNotificationsTable: () => dispatch(actions.initNotificationTable()),
-    onInitMessagesTable:()=> dispatch(actions.initMessagesTable())
+    onInitMessagesTable: () => dispatch(actions.initMessagesTable())
   }
 }
 
@@ -120,3 +120,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(Home);
 //     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
 //   ]
 
+
+const tagData = 'adammmm';

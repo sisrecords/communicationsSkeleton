@@ -62,6 +62,10 @@
   padding: 0px !important;
 }
 
+.tagSearchContainer input{
+  width: 100% !important;
+}
+
 .smallPieChartsComponentContainer {
   height: 100%;
   display: flex;

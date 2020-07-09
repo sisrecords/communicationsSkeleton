@@ -1,38 +1,57 @@
 // import '../../styles/tag-search-2.scss';
+import ReactTags from 'react-tag-autocomplete'
+import Autocomplete from "./Autocomplete";
 
 const TagsInput = props => {
-	const [tags, setTags] = React.useState(props.tags);
-	const removeTags = indexToRemove => {
-		setTags([...tags.filter((_, index) => index !== indexToRemove)]);
-	};
-	const addTags = event => {
-		if (event.target.value !== "") {
-			setTags([...tags, event.target.value]);
-			// props.selectedTags([...tags, event.target.value]);
-			event.target.value = "";
-		}
-	};
-	return (
-		<div className="tags-input">
-			<ul id="tags">
-				{tags.map((tag, index) => (
-					<li key={index} className="tag">
-						<span className='tag-title'>{tag}</span>
-						<span className='tag-close-icon'
-							onClick={() => removeTags(index)}
-						>
-							x
+    const [tags, setTags] = React.useState(props.tags);
+    const [suggestions, setSuggestions] = React.useState(props.suggestions);
+
+    const removeTags = indexToRemove => {
+        setTags([...tags.filter((_, index) => index !== indexToRemove)]);
+    };
+    // const seeSuggestions = suggestions => {
+    const onBackBtn = () =>{
+        debugger;
+            let lastIndex = tags.length;
+            let newTags = tags.slice(0, lastIndex - 1);
+            setTags(newTags);
+    }
+    // }
+    let suggestionsListComponent;
+    const addTags = tag => {
+        debugger;
+        if (tag !== "") {
+            setTags([...tags, tag]);
+            // props.selectedTags([...tags, event.target.value]);
+            tag = "";
+        }
+    };
+    return (
+            <div className="tags-input">
+            <div>
+                <ul id="tags">
+                    {tags.map((tag, index) => (
+                        <li key={index} className="tag"
+                        >
+                            <span className='tag-title'>{tag}</span>
+                            <span className='tag-close-icon'
+                                onClick={() => removeTags(index)}
+                            >
+                                x
 						</span>
-					</li>
-				))}
-			</ul>
-			<input
-				type="text"
-				onKeyUp={event => event.key === "Enter" ? addTags(event) : null}
-				placeholder="Press enter to add tags"
-			/>
-		</div>
-	);
+                        </li>
+                    ))}
+                </ul>
+            </div>
+                <div className="autocomplete-container">
+                    <Autocomplete
+                        suggestions={suggestions}
+                        onSelect={addTags}
+                        onBackBtn={onBackBtn}>
+                    </Autocomplete>
+                </div>
+            </div>
+    );
 };
 
 // const App = () => {

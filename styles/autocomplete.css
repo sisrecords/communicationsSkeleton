@@ -1,0 +1,50 @@
+input {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    /* width: 300px; */
+  }
+  
+  .no-suggestions {
+    color: #999;
+    padding: 0.5rem;
+  }
+  
+  .autocomplete-container{
+    flex: 1;
+  }
+  .suggestions {
+    animation-name: suggestions; 
+    animation-duration: 0.5s;
+    border: 1px solid #999;
+    /* border-top-width: 0; */
+    border-radius: 5px;
+    list-style: none;
+    margin-top: 0;
+    max-height: 143px;
+    /* overflow-y: auto; */
+    overflow: auto;
+    padding-left: 0;
+    width: calc(300px + 1rem);  
+    position: absolute;
+    z-index: 100;
+    background-color: lightgray;
+  }
+  @keyframes suggestions{
+    0% {opacity: 0;}
+    100% { opacity: 1;}
+  }
+  .suggestions li {
+    padding: 0.5rem;
+  }
+  
+  .suggestion-active,
+  .suggestions li:hover {
+    background-color: #00028f;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  
+  .suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid #999;
+  }

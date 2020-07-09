@@ -10,9 +10,9 @@ import NotificationTable from '../components/notification-table/notification-tab
 import MessageTable from '../components/message-table/message-table';
 import SmallPieChart from '../components/small-pie-chart/small-pie-chart';
 import MaterialTable from '../components/main-table/main-table';
-import TagSearch from '../components/tag-search/tag-search';
+// import TagSearch from '../components/tag-search/tag-search';
 import TagsInput from '../components/tag-search/tag-search-2';
-import TagSearch3 from '../components/tag-search/tag-search-3';
+// import TagSearch3 from '../components/tag-search/tag-search-3';
 const Home = (props) => {
   return (
     <div className={utilStyles.gridContainer}>
@@ -35,8 +35,8 @@ const Home = (props) => {
       <div className={utilStyles.mainTableContainer}>
         <div className={utilStyles.tagSearchContainer}>
           {/* <TagSearch tags={props.tagsDataProp} suggestions={props.suggestionsDataProp}></TagSearch> */}
-          {/* <TagsInput  tags={['Nodejs', 'MongoDB']}></TagsInput> */}
-          <TagSearch3></TagSearch3>
+          <TagsInput tags={['Nodejs', 'MongoDB']} suggestions={['adam','ben','aaaa','bbbb']}></TagsInput>
+          {/* <TagSearch3 tagsData = {props.tagsDataProp} suggestions = {props.suggestionsDataProp}></TagSearch3> */}
         </div>
         <MaterialTable data={props.mainTableDataProp} ></MaterialTable>
       </div>

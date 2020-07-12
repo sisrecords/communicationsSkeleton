@@ -54,29 +54,30 @@ class Autocomplete extends Component {
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput:""
+      userInput: ""
     });
     this.props.onSelect(e.target.textContent)
 
   };
 
   // Event fired when the user presses a key down
-  onKeyDown  = e => {
+  onKeyDown = e => {
     const { activeSuggestion, filteredSuggestions } = this.state;
-    // User pressed the enter key, update the input and close the
-    // suggestions
-      if (e.key === "Backspace" && this.state.userInput === "") {
+    if (e.key === "Backspace" && this.state.userInput === "") {
       this.props.onBackBtn();
     }
+    // User pressed the enter key, update the input and close the
+    // suggestions
     if (e.keyCode === 13) {
       this.setState({
         activeSuggestion: 0,
+        filteredSuggestions: [],
         showSuggestions: false,
         userInput: ""
       });
-      if(filteredSuggestions.length > 0){
+      if (filteredSuggestions.length > 0) {
         this.props.onSelect(filteredSuggestions[activeSuggestion])
-      }else{
+      } else {
         this.props.onSelect(e.target.value)
       }
     }
@@ -89,10 +90,10 @@ class Autocomplete extends Component {
     }
     // User pressed the down arrow, increment the index
     else if (e.keyCode === 40) {
-      if (activeSuggestion - 1 === filteredSuggestions.length) {
+      debugger;
+      if (activeSuggestion === filteredSuggestions.length - 1) {
         return;
       }
-
       this.setState({ activeSuggestion: activeSuggestion + 1 });
     }
   };

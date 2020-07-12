@@ -4,7 +4,7 @@ import Autocomplete from "./Autocomplete";
 
 const TagsInput = props => {
     const [tags, setTags] = React.useState(props.tags);
-    const [suggestions, setSuggestions] = React.useState(props.suggestions);
+    const [suggestions] = React.useState(props.suggestions);
 
     const removeTags = indexToRemove => {
         setTags([...tags.filter((_, index) => index !== indexToRemove)]);
@@ -17,7 +17,6 @@ const TagsInput = props => {
             setTags(newTags);
     }
     // }
-    let suggestionsListComponent;
     const addTags = tag => {
         debugger;
         if (tag !== "") {
@@ -53,16 +52,5 @@ const TagsInput = props => {
             </div>
     );
 };
-
-// const App = () => {
-// 	const selectedTags = tags => {
-// 		console.log(tags);
-// 	};
-// 	return (
-// 		<div className="App">
-// 			<TagsInput selectedTags={selectedTags}  tags={['Nodejs', 'MongoDB']}/>
-// 		</div>
-// 	);
-// };
 
 export default TagsInput;

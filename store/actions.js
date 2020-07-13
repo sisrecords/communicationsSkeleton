@@ -2,10 +2,10 @@
 // export const REMOVE = 'REMOVE';
 
 //notification table actions
-export const SET_NOTIFICATION_TABLE = 'SET_NOTIFICATION_TABLE';
+export const SET_NOTIFICATION_COMPONENT = 'SET_NOTIFICATION_COMPONENT';
 
 //messages table actions
-export const SET_MESSAGE_TABLE = 'SET_MESSAGE_TABLE';
+export const SET_MESSAGE_COMPONENT = 'SET_MESSAGE_COMPONENT';
 
 //small pie charts actions 
 export const SET_SMALL_PIE_CHARTS = 'SET_SMALL_PIE_CHARTS';

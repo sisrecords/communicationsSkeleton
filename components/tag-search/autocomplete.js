@@ -48,7 +48,6 @@ class Autocomplete extends Component {
 
   //   Event fired when the user clicks on a suggestion
   onClick = e => {
-    debugger;
     // Update the user input and reset the rest of the state
     this.setState({
       activeSuggestion: 0,
@@ -90,7 +89,6 @@ class Autocomplete extends Component {
     }
     // User pressed the down arrow, increment the index
     else if (e.keyCode === 40) {
-      debugger;
       if (activeSuggestion === filteredSuggestions.length - 1) {
         return;
       }

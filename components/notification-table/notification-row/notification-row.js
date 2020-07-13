@@ -1,7 +1,7 @@
 
 import notificationStyles from './notification-row.module.css';
 
-const NotificationTableRow = ({ singleRowData }) => {
+const NotificationComponentRow = ({ singleRowData }) => {
     let notificationSubjectImg;
     if (singleRowData.action ===1) {
         notificationSubjectImg = "/images/check-mark.jpg";
@@ -21,4 +21,4 @@ const NotificationTableRow = ({ singleRowData }) => {
 }
 
 
-export default NotificationTableRow;
+export default NotificationComponentRow;

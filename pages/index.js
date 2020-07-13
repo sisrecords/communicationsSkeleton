@@ -1,27 +1,39 @@
 // import Head from 'next/head'
 // import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { connect } from 'react-redux';
-import * as actions from '../store/actionCreators';
+import utilStyles from "../styles/utils.module.css";
+import { connect } from "react-redux";
+import * as actions from "../store/actionCreators";
 // import Button from '@material-ui/core/Button';
-import BigPieChart from '../components/pie-chart/files-time-pie-chart';
-import LineChart from '../components/line-chart/line-chart'
-import NotificationTable from '../components/notification-table/notification-table';
-import MessageTable from '../components/message-table/message-table';
-import SmallPieChart from '../components/small-pie-chart/small-pie-chart';
-import MaterialTable from '../components/main-table/main-table';
-// import TagSearch from '../components/tag-search/tag-search';
-import TagsInput from '../components/tag-search/tag-search-2';
-// import TagSearch3 from '../components/tag-search/tag-search-3';
-const Home = (props) => {
+import BigPieChart from "../components/pie-chart/files-time-pie-chart";
+import LineChart from "../components/line-chart/line-chart";
+import NotificationComponent from "../components/notification-table/notification-component";
+import MessageComponent from "../components/message-table/message-component";
+import SmallPieChart from "../components/small-pie-chart/small-pie-chart";
+import MaterialTable from "../components/main-table/main-table";
+import TagsInput from "../components/tag-search/tag-search-2";
+
+const Home = props => {
+  const filterTableData = tagText => {
+    debugger;
+    let found = props.mainTableDataProp.filter(tableLine => {
+      return Object.values(tableLine).indexOf(tagText) >= 0;
+    });
+    props.onInitMainTable(found);
+  };
+
   return (
     <div className={utilStyles.gridContainer}>
-      <div className={utilStyles.notificationTable}>
-        <NotificationTable key="2" rowsData={props.notificationsDataProp}></NotificationTable>
+      <div className={utilStyles.notificationComponent}>
+        <NotificationComponent
+          key="2"
+          rowsData={props.notificationsDataProp}
+        ></NotificationComponent>
         <button onClick={props.onInitNotificationsTable}>get</button>
       </div>
       <div className={utilStyles.lineChart}>
-        <div className={utilStyles.rightHeadline}>מצב טיפול בתיקים בחודש החולף</div>
+        <div className={utilStyles.rightHeadline}>
+          מצב טיפול בתיקים בחודש החולף
+        </div>
         <LineChart data={props.lineChartDataProp}></LineChart>
       </div>
       <div className={utilStyles.pieChart}>
@@ -29,16 +41,18 @@ const Home = (props) => {
         <BigPieChart data={props.pieChartDataProp}></BigPieChart>
       </div>
       <div className={utilStyles.messagesTable}>
-        <MessageTable key="1" rowsData={props.messagesDataProp}></MessageTable>
+        <MessageComponent key="1" rowsData={props.messagesDataProp}></MessageComponent>
         <button onClick={props.onInitMessagesTable}>get</button>
       </div>
       <div className={utilStyles.mainTableContainer}>
         <div className={utilStyles.tagSearchContainer}>
-          {/* <TagSearch tags={props.tagsDataProp} suggestions={props.suggestionsDataProp}></TagSearch> */}
-          <TagsInput tags={['Nodejs', 'MongoDB']} suggestions={['adam','ben','aaaa','bbbb']}></TagsInput>
-          {/* <TagSearch3 tagsData = {props.tagsDataProp} suggestions = {props.suggestionsDataProp}></TagSearch3> */}
+          <TagsInput
+            tags={[]} //["Nodejs", "MongoDB"]
+            suggestions={["adam", "ben", "aaaa", "bbbb"]}
+            freeTextSearch={filterTableData}
+          ></TagsInput>
         </div>
-        <MaterialTable data={props.mainTableDataProp} ></MaterialTable>
+        <MaterialTable data={props.mainTableDataProp}></MaterialTable>
       </div>
       <div className={utilStyles.smallPieChartsComponentContainer}>
         <div className={utilStyles.rightHeadline}>שיטת התקשרות</div>
@@ -49,9 +63,7 @@ const Home = (props) => {
             </div>
             <SmallPieChart data={props.smallPieDataProp[0]}></SmallPieChart>
           </div>
-          <div className={utilStyles.smallPieChartHeadline}>
-            זוח
-          </div>
+          <div className={utilStyles.smallPieChartHeadline}>זוח</div>
         </div>
         <div className={utilStyles.pieDataContainer}>
           <div className={utilStyles.singlePieChartContainer}>
@@ -60,9 +72,7 @@ const Home = (props) => {
             </div>
             <SmallPieChart data={props.smallPieDataProp[1]}></SmallPieChart>
           </div>
-          <div className={utilStyles.smallPieChartHeadline}>
-            fix
-          </div>
+          <div className={utilStyles.smallPieChartHeadline}>fix</div>
         </div>
         <div className={utilStyles.pieDataContainer}>
           <div className={utilStyles.singlePieChartContainer}>
@@ -71,9 +81,7 @@ const Home = (props) => {
             </div>
             <SmallPieChart data={props.smallPieDataProp[2]}></SmallPieChart>
           </div>
-          <div className={utilStyles.smallPieChartHeadline}>
-            אחר
-          </div>
+          <div className={utilStyles.smallPieChartHeadline}>אחר</div>
         </div>
       </div>
       <div className={utilStyles.tagsContainer}>
@@ -81,9 +89,8 @@ const Home = (props) => {
         <div>no need to implement for now</div>
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 const mapStateToProps = state => {
   return {
@@ -94,31 +101,19 @@ const mapStateToProps = state => {
     lineChartDataProp: state.lineChartReducer.lineChartData,
     mainTableDataProp: state.mainTableReducer.mainTableData,
     tagsDataProp: state.tagsReducer.tags,
-    suggestionsDataProp:state.tagsReducer.suggestions
-  }
-}
+    suggestionsDataProp: state.tagsReducer.suggestions
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitNotificationsTable: () => dispatch(actions.initNotificationTable()),
-    onInitMessagesTable: () => dispatch(actions.initMessagesTable())
-  }
-}
+    onInitNotificationsTable: () => dispatch(actions.initNotificationComponent()),
+    onInitMessagesTable: () => dispatch(actions.initMessagesTable()),
+    onInitMainTable: rows => dispatch(actions.setMainTableData(rows))
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-
-// const data = [
-//     { name: 'adam', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//     { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//   ]
-
-
-const tagData = 'adammmm';
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

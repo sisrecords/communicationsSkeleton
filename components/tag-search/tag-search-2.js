@@ -1,5 +1,4 @@
-// import '../../styles/tag-search-2.scss';
-import ReactTags from 'react-tag-autocomplete'
+
 import Autocomplete from "./Autocomplete";
 
 const TagsInput = props => {
@@ -11,16 +10,21 @@ const TagsInput = props => {
     };
     // const seeSuggestions = suggestions => {
     const onBackBtn = () =>{
-        debugger;
             let lastIndex = tags.length;
             let newTags = tags.slice(0, lastIndex - 1);
             setTags(newTags);
     }
     // }
-    const addTags = tag => {
-        debugger;
+    const addTag = tag => {
         if (tag !== "") {
             setTags([...tags, tag]);
+            if (suggestions.includes(tag)) {
+                //need to implement tags that have more tags attached
+            }
+            else{
+                //free text search
+                props.freeTextSearch(tag);
+            }
             // props.selectedTags([...tags, event.target.value]);
             tag = "";
         }
@@ -45,7 +49,7 @@ const TagsInput = props => {
                 <div className="autocomplete-container">
                     <Autocomplete
                         suggestions={suggestions}
-                        onSelect={addTags}
+                        onSelect={addTag}
                         onBackBtn={onBackBtn}>
                     </Autocomplete>
                 </div>

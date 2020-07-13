@@ -5,7 +5,9 @@ const TagsInput = props => {
   const [suggestions] = React.useState(props.suggestions);
 
   const removeTags = indexToRemove => {
+    debugger;
     setTags([...tags.filter((_, index) => index !== indexToRemove)]);
+    props.filterTable([...tags.filter((_, index) => index !== indexToRemove)]);
   };
   // const seeSuggestions = suggestions => {
   const onBackBtn = () => {
@@ -23,7 +25,7 @@ const TagsInput = props => {
         //need to implement tags that have more tags attached
       } else {
         //free text search
-        props.filterTable([tag]);
+        props.filterTable([...tags, tag]);
       }
       // props.selectedTags([...tags, event.target.value]);
       tag = "";

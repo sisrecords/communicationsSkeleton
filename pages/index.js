@@ -13,22 +13,6 @@ import MaterialTable from "../components/main-table/main-table";
 import TagsInput from "../components/tag-search/tag-search-2";
 
 const Home = props => {
-  // const filterTableFreeTextTag = tagText => {
-  //   debugger;
-  //   let found = props.mainTableDataProp.filter(tableLine => {
-  //     return Object.values(tableLine).indexOf(tagText) >= 0;
-  //   });
-  //   props.onInitMainTable(found);
-  // };
-
-  // const filterTable = tags => {
-  //   if (tags.length === 0) {
-  //     props.onInitMainTable();
-  //   } else {
-  //     props.initMainTable(tags);
-  //   }
-  // };
-
   return (
     <div className={utilStyles.gridContainer}>
       <div className={utilStyles.notificationComponent}>
@@ -58,9 +42,8 @@ const Home = props => {
       <div className={utilStyles.mainTableContainer}>
         <div className={utilStyles.tagSearchContainer}>
           <TagsInput
-            tags={[]} //["Nodejs", "MongoDB"]
-            suggestions={["adam", "ben", "aaaa", "bbbb"]}
-            //filterTableFreeTextTag={filterTableFreeTextTag}
+            tags={props.tagsDataProp}
+            suggestions={props.suggestionsDataProp}
             filterTable={props.onInitMainTable}
           ></TagsInput>
         </div>

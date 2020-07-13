@@ -2,18 +2,18 @@ import * as actionTypes from "../actions";
 
 export const initialState = {
   mainTableData: [
-    { name: "adam", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "baranes", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 }
+    { name: "adam", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "baranes", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" },
+    { name: "Mehmet", surname: "Baran", birthYear: "1987", birthCity: "63" }
   ]
 };
 

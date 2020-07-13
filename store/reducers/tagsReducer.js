@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions';
 
 
-const initialState = {
+export const initialState = {
         tags:[
             {
                 id: "1",

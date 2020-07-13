@@ -6,20 +6,28 @@ import * as actions from "../store/actionCreators";
 // import Button from '@material-ui/core/Button';
 import BigPieChart from "../components/pie-chart/files-time-pie-chart";
 import LineChart from "../components/line-chart/line-chart";
-import NotificationComponent from "../components/notification-table/notification-component";
-import MessageComponent from "../components/message-table/message-component";
+import NotificationComponent from "../components/notification-component/notification-component";
+import MessageComponent from "../components/message-component/message-component";
 import SmallPieChart from "../components/small-pie-chart/small-pie-chart";
 import MaterialTable from "../components/main-table/main-table";
 import TagsInput from "../components/tag-search/tag-search-2";
 
 const Home = props => {
-  const filterTableData = tagText => {
-    debugger;
-    let found = props.mainTableDataProp.filter(tableLine => {
-      return Object.values(tableLine).indexOf(tagText) >= 0;
-    });
-    props.onInitMainTable(found);
-  };
+  // const filterTableFreeTextTag = tagText => {
+  //   debugger;
+  //   let found = props.mainTableDataProp.filter(tableLine => {
+  //     return Object.values(tableLine).indexOf(tagText) >= 0;
+  //   });
+  //   props.onInitMainTable(found);
+  // };
+
+  // const filterTable = tags => {
+  //   if (tags.length === 0) {
+  //     props.onInitMainTable();
+  //   } else {
+  //     props.initMainTable(tags);
+  //   }
+  // };
 
   return (
     <div className={utilStyles.gridContainer}>
@@ -28,7 +36,7 @@ const Home = props => {
           key="2"
           rowsData={props.notificationsDataProp}
         ></NotificationComponent>
-        <button onClick={props.onInitNotificationsTable}>get</button>
+        <button onClick={props.onInitNotificationsComponent}>get</button>
       </div>
       <div className={utilStyles.lineChart}>
         <div className={utilStyles.rightHeadline}>
@@ -41,15 +49,19 @@ const Home = props => {
         <BigPieChart data={props.pieChartDataProp}></BigPieChart>
       </div>
       <div className={utilStyles.messagesTable}>
-        <MessageComponent key="1" rowsData={props.messagesDataProp}></MessageComponent>
-        <button onClick={props.onInitMessagesTable}>get</button>
+        <MessageComponent
+          key="1"
+          rowsData={props.messagesDataProp}
+        ></MessageComponent>
+        <button onClick={props.onInitMessagesComponent}>get</button>
       </div>
       <div className={utilStyles.mainTableContainer}>
         <div className={utilStyles.tagSearchContainer}>
           <TagsInput
             tags={[]} //["Nodejs", "MongoDB"]
             suggestions={["adam", "ben", "aaaa", "bbbb"]}
-            freeTextSearch={filterTableData}
+            //filterTableFreeTextTag={filterTableFreeTextTag}
+            filterTable={props.onInitMainTable}
           ></TagsInput>
         </div>
         <MaterialTable data={props.mainTableDataProp}></MaterialTable>
@@ -107,9 +119,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitNotificationsTable: () => dispatch(actions.initNotificationComponent()),
-    onInitMessagesTable: () => dispatch(actions.initMessagesTable()),
-    onInitMainTable: rows => dispatch(actions.setMainTableData(rows))
+    onInitNotificationsComponent: () =>
+      dispatch(actions.initNotificationComponent()),
+    onInitMessagesComponent: () => dispatch(actions.initMessagesComponent()),
+    onInitMainTable: tags => dispatch(actions.initMainTable(tags))
   };
 };
 

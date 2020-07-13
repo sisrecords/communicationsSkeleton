@@ -1,5 +1,5 @@
 import * as actionsTypes from "./actions";
-
+import { initialState } from "./reducers/mainTableReducer";
 export const setNotificationComponent = notifacationTableData => {
   return {
     type: actionsTypes.SET_NOTIFICATION_COMPONENT,
@@ -82,12 +82,8 @@ export const initNotificationComponent = () => {
     dispatch(setNotificationComponent(response));
   };
 };
-// export const initMainTable = (filteredRows) =>{
-//   return dipatch =>{
 
-//   }
-// }
-export const initMessagesTable = () => {
+export const initMessagesComponent = () => {
   return dispatch => {
     //get asychronosly the notifications from db
     let response = [
@@ -113,29 +109,17 @@ export const initMessagesTable = () => {
     dispatch(setMessagesTable(response));
   };
 };
-// layerInfo: {layers: [{layerId: "geo", volumeAnnotationsVersion: "12"}]}
-// layers: [{layerId: "geo", volumeAnnotationsVersion: "12"}]
-// 0: {layerId: "geo", volumeAnnotationsVersion: "12"}
-// layerId: "geo"
-// volumeAnnotationsVersion: "12"
-
-// [
-//   {
-//     "id": "1",
-//     "action": 2,//1-approved,2-transfered to clearification,...
-//     "name": "אייל בנימין",
-//     "subject": "יצירת מטוסי לחימה",
-//     "subjectNum": "36875",
-//     "actionDesctiption": "האם אתה בטוח שאלה",
-//     "timeStamp": "לפני 7 דקות"
-//   },
-//   {
-//     "id": "2",
-//     "action": 1,//1-approved,2-transfered to clearification,...
-//     "name": "ישראל ישראלי",
-//     "subject": "יצירת מכם 2 ",
-//     "subjectNum": "12345",
-//     "actionDesctiption": "אני לא חושב שזה אמור",
-//     "timeStamp": "לפני 38 דקות"
-//   },
-// ]
+export const initMainTable = tags => {
+  return dispatch => {
+    //send tags to db and get back data
+    debugger;
+    let response = initialState.mainTableData;
+    //local filter - this needs to be in the server
+    tags.forEach(tag => {
+      response = response.filter(singleObjectInResponse => {
+        return Object.values(singleObjectInResponse).indexOf(tag) >= 0;
+      });
+    });
+    dispatch(setMainTableData(response));
+  };
+};

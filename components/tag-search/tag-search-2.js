@@ -3,15 +3,17 @@ import Autocomplete from "./Autocomplete";
 const TagsInput = props => {
   const [tags, setTags] = React.useState(props.tags);
   const [suggestions] = React.useState(props.suggestions);
-
+  //const [doubleLayerSuggestions] = React.useState(props.doubleLayerSuggestions) 
+  
+  
   const removeTags = indexToRemove => {
-    debugger;
+    //debugger;
     setTags([...tags.filter((_, index) => index !== indexToRemove)]);
     props.filterTable([...tags.filter((_, index) => index !== indexToRemove)]);
   };
   // const seeSuggestions = suggestions => {
   const onBackBtn = () => {
-    debugger;
+    //debugger;
     let lastIndex = tags.length;
     let newTags = tags.slice(0, lastIndex - 1);
     setTags(newTags);
@@ -19,12 +21,18 @@ const TagsInput = props => {
   };
   // }
   const addTag = tag => {
-    if (tag !== "") {
-      setTags([...tags, tag]);
-      if (suggestions.includes(tag)) {
-        //need to implement tags that have more tags attached
+    //debugger;
+    if (tag !== "") {         
+    //    if (Object.keys(suggestions.doubleLayerSuggestions).includes(tag)) {
+    //     console.log("im here");
+        
+    //    }     
+      if (suggestions.singleLayerSuggestions.includes(tag)) {
+        setTags([...tags, tag]);
+        props.filterTable([...tags, tag]);
       } else {
         //free text search
+        setTags([...tags, tag]);
         props.filterTable([...tags, tag]);
       }
       // props.selectedTags([...tags, event.target.value]);

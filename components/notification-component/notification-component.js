@@ -27,7 +27,6 @@ const NotificationComponent = ({ rowsData }) => {
   // if (!rowsData) {
   //   return null;
   // }
-  // debugger;
   // rowsData.map((val, index) => {
   //   return (
   //     <div key={index}>

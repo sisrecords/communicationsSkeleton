@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 class Autocomplete extends Component {
   static propTypes = {
-    suggestions: PropTypes.instanceOf(Array)
+    singleLayerSuggestions: PropTypes.instanceOf(Array)    
   };
 
   static defaultProps = {
-    suggestions: []
+    singleLayerSuggestions: []
   };
 
   constructor(props) {
@@ -27,23 +27,41 @@ class Autocomplete extends Component {
 
   // Event fired when the input value is changed
   onChange = e => {
-    const { suggestions } = this.props;
-    const userInput = e.currentTarget.value;
-
+    const { singleLayerSuggestions,doubleLayerSuggestions } = this.props.suggestions;
+    
+    debugger;
+    let userInput = e.currentTarget.value;
+    if (userInput.startsWith('#')) {
+      userInput = userInput.substring(1);
+        const singleLayerFilteredSuggestions = singleLayerSuggestions.filter(
+          suggestion =>
+            suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+        );
+        const doubleLayerFilteredSuggestions = Object.keys(doubleLayerSuggestions).filter(
+          suggestion =>
+            suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+        );
+        const filteredSuggestions =  singleLayerFilteredSuggestions.concat(doubleLayerFilteredSuggestions);
+        this.setState({
+          activeSuggestion: 0,
+          filteredSuggestions:filteredSuggestions,
+          showSuggestions: true,
+          userInput: e.currentTarget.value
+        });
+      }else{
+        this.setState({
+          activeSuggestion: 0,
+          filteredSuggestions:[],
+          showSuggestions: true,
+          userInput: e.currentTarget.value
+        });
+      }
+    // debugger;
     // Filter our suggestions that don't contain the user's input
-    const filteredSuggestions = suggestions.filter(
-      suggestion =>
-        suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    );
 
-    // Update    the user input and filtered suggestions, reset the active
+
+    // Update the user input and filtered suggestions, reset the active
     // suggestion and make sure the suggestions are shown
-    this.setState({
-      activeSuggestion: 0,
-      filteredSuggestions,
-      showSuggestions: true,
-      userInput: e.currentTarget.value
-    });
   };
 
   //   Event fired when the user clicks on a suggestion
@@ -55,29 +73,41 @@ class Autocomplete extends Component {
       showSuggestions: false,
       userInput: ""
     });
-    this.props.onSelect(e.target.textContent)
-
+    this.props.onSelect(e.target.textContent);
   };
 
   // Event fired when the user presses a key down
   onKeyDown = e => {
     const { activeSuggestion, filteredSuggestions } = this.state;
+    const { doubleLayerSuggestions } = this.props.suggestions;
+
     if (e.key === "Backspace" && this.state.userInput === "") {
       this.props.onBackBtn();
     }
     // User pressed the enter key, update the input and close the
     // suggestions
+    debugger;
     if (e.keyCode === 13) {
-      this.setState({
-        activeSuggestion: 0,
-        filteredSuggestions: [],
-        showSuggestions: false,
-        userInput: ""
-      });
+      if (Object.keys(doubleLayerSuggestions).includes(filteredSuggestions[activeSuggestion])) {
+        this.setState({
+          activeSuggestion:0,
+          filteredSuggestions:doubleLayerSuggestions[filteredSuggestions[activeSuggestion]],
+          showSuggestions: true,
+          userInput:"#"
+        })
+        // console.log(doubleLayerSuggestions["orel1"]);    
+      }else{
+        this.setState({
+          activeSuggestion: 0,
+          filteredSuggestions: [],
+          showSuggestions: false,
+          userInput: ""
+        });
+      }
       if (filteredSuggestions.length > 0) {
-        this.props.onSelect(filteredSuggestions[activeSuggestion])
+        this.props.onSelect(filteredSuggestions[activeSuggestion]);
       } else {
-        this.props.onSelect(e.target.value)
+        this.props.onSelect(e.target.value);
       }
     }
     // User pressed the up arrow, decrement the index
@@ -111,7 +141,7 @@ class Autocomplete extends Component {
 
     let suggestionsListComponent;
 
-    if (showSuggestions && userInput) {
+    if (showSuggestions && userInput.startsWith("#")) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
           <ul className="suggestions">
@@ -122,13 +152,8 @@ class Autocomplete extends Component {
               if (index === activeSuggestion) {
                 className = "suggestion-active";
               }
-
               return (
-                <li
-                  className={className}
-                  key={suggestion}
-                  onClick={onClick}
-                >
+                <li className={className} key={suggestion} onClick={onClick}>
                   {suggestion}
                 </li>
               );

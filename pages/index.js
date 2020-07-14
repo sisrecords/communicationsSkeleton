@@ -44,6 +44,7 @@ const Home = props => {
           <TagsInput
             tags={props.tagsDataProp}
             suggestions={props.suggestionsDataProp}
+            //doubleLayerSuggestions = {props.doubleLayerSuggestionsDataProp}
             filterTable={props.onInitMainTable}
           ></TagsInput>
         </div>
@@ -96,14 +97,14 @@ const mapStateToProps = state => {
     lineChartDataProp: state.lineChartReducer.lineChartData,
     mainTableDataProp: state.mainTableReducer.mainTableData,
     tagsDataProp: state.tagsReducer.tags,
-    suggestionsDataProp: state.tagsReducer.suggestions
+    suggestionsDataProp: state.tagsReducer.suggestions,
+    //doubleLayerSuggestionsDataProp: state.tagsReducer.suggestions.doubleLayerSuggestions
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitNotificationsComponent: () =>
-      dispatch(actions.initNotificationComponent()),
+    onInitNotificationsComponent: () => dispatch(actions.initNotificationComponent()),
     onInitMessagesComponent: () => dispatch(actions.initMessagesComponent()),
     onInitMainTable: tags => dispatch(actions.initMainTable(tags))
   };

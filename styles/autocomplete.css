@@ -20,7 +20,7 @@ input {
     border-radius: 5px;
     list-style: none;
     margin-top: 0;
-    max-height: 143px;
+    /* max-height: 143px; */
     /* overflow-y: auto; */
     overflow: auto;
     padding-left: 0;

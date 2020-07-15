@@ -28,7 +28,9 @@ const TagsInput = props => {
         
     //    }     
       if (suggestions.singleLayerSuggestions.includes(tag)) {
+        tag = "#" + tag;
         setTags([...tags, tag]);
+        tag.substring(1);
         props.filterTable([...tags, tag]);
       } else {
         //free text search

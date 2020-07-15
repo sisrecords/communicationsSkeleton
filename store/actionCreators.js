@@ -112,12 +112,17 @@ export const initMessagesComponent = () => {
 export const initMainTable = tags => {
   return dispatch => {
     //send tags to db and get back data
-    //debugger;
     let response = initialState.mainTableData;
-    //local filter - this needs to be in the server
+    //local filter - this needs to be in the server unless we have the entire data
     tags.forEach(tag => {
       response = response.filter(singleObjectInResponse => {
-        return Object.values(singleObjectInResponse).indexOf(tag) >= 0;
+        for (var key in singleObjectInResponse) {
+          if (typeof singleObjectInResponse[key] == "string") {
+            if (singleObjectInResponse[key].includes(tag.toLowerCase())) {
+              return true;
+            }
+          }
+        }
       });
     });
     dispatch(setMainTableData(response));

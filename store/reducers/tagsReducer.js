@@ -5,8 +5,8 @@ export const initialState = {
   suggestions: {
     singleLayerSuggestions: ["adam1", "adam2", "ben1", "ben2"],
     doubleLayerSuggestions: {
-      orel1: ["orel2", "orel3"],
-      mor1:["mor2","mor3"]
+      מחלקה: ["תקשוב", "מח״ר","מערכות","אופטרוקניקה"],
+      יחידה:["מו״פ","מת״ט","חומה","הסגן המדעי"]
     }
   }
 };

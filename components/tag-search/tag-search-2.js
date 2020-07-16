@@ -20,12 +20,12 @@ const TagsInput = props => {
     props.filterTable(newTags);
   };
   // }
-  debugger;
   let firstPartOfTag="";
   const addTag = tag => {
     //debugger;
     if (tag !== "") {  
-      debugger;       
+      debugger;   
+      let smthing = Object.keys(suggestions.doubleLayerSuggestions);
        if (Object.keys(suggestions.doubleLayerSuggestions).includes(tag)) {
            firstPartOfTag = tag +": ";
       }     

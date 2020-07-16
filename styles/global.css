@@ -43,7 +43,16 @@ button{
 .MuiTableCell-root{
   direction: ltr !important;
 }
+.MuiPaper-elevation2{
+  height: 100%;
+}
+/* .Component-horizontalScrollContainer-12{
+  height: 92%;
+}
 
+.MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded{
+  height: 92%;
+} */
 #adam{
   background-color: red;
   position: absolute;

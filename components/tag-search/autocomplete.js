@@ -31,8 +31,7 @@ class Autocomplete extends Component {
       singleLayerSuggestions,
       doubleLayerSuggestions
     } = this.props.suggestions;
-
-    let userInput = e.currentTarget.value;
+    let userInput = e.currentTarget.value.trim();
     if (userInput.startsWith("#")) {
       userInput = userInput.substring(1);
       const singleLayerFilteredSuggestions = singleLayerSuggestions.filter(
@@ -52,7 +51,7 @@ class Autocomplete extends Component {
         activeSuggestion: 0,
         filteredSuggestions: filteredSuggestions,
         showSuggestions: true,
-        userInput: e.currentTarget.value
+        userInput: e.currentTarget.value.trim()
       });
     } else {
       this.setState({
@@ -85,7 +84,6 @@ class Autocomplete extends Component {
       this.props.onBackBtn();
     }
     // User pressed the enter key, update the input and close the
-    // suggestions
     if (e.keyCode === 13) {
       if (
         Object.keys(doubleLayerSuggestions).includes(
@@ -109,9 +107,9 @@ class Autocomplete extends Component {
         });
       }
       if (filteredSuggestions.length > 0) {
-        this.props.onSelect(filteredSuggestions[activeSuggestion]);
+        this.props.onSelect(filteredSuggestions[activeSuggestion],false);
       } else {
-        this.props.onSelect(e.target.value);
+        this.props.onSelect(e.target.value,true);
       }
     }
     // User pressed the up arrow, decrement the index

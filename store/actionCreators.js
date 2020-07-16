@@ -112,9 +112,20 @@ export const initMessagesComponent = () => {
 export const initMainTable = tags => {
   return dispatch => {
     //send tags to db and get back data
+
+    //
     let response = initialState.mainTableData;
     //local filter - this needs to be in the server unless we have the entire data
+    let delimiter = ":";
     tags.forEach(tag => {
+      if (tag.indexOf(delimiter > -1)) {
+        debugger;
+          let untilDelimiterIndex = tag.indexOf(':');
+          //the key of the tag
+          let keyTag = tag.slice(0,untilDelimiterIndex);
+          //the value of the tag
+          tag = tag.slice(-untilDelimiterIndex);
+      }
       response = response.filter(singleObjectInResponse => {
         for (var key in singleObjectInResponse) {
           if (typeof singleObjectInResponse[key] == "string") {

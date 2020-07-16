@@ -67,13 +67,13 @@ export default function MaterialTableDemo({ data }) {
     <AutoSizer>
       {({ height, width }) => {
         console.log(`Height: ${height} | Width: ${width}`);
-        const pageSize = Math.floor((height - 192) / 48);
+        const pageSize = Math.floor((height - 192) / 68);
         console.log(`Page Size: ${pageSize}`);
 
         return (
           <div
             style={{
-              height: `${height}px`,
+              height: `${height-50}px`,
               width: `${width}px`,
               overflowY: "auto",
               direction: "rtl"

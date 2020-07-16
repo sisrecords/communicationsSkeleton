@@ -3,15 +3,14 @@ import Autocomplete from "./Autocomplete";
 const TagsInput = props => {
   const [tags, setTags] = React.useState(props.tags);
   const [suggestions] = React.useState(props.suggestions);
-  //const [doubleLayerSuggestions] = React.useState(props.doubleLayerSuggestions) 
-  
-  
+  //const [doubleLayerSuggestions] = React.useState(props.doubleLayerSuggestions)
+
   const removeTags = indexToRemove => {
     //debugger;
     setTags([...tags.filter((_, index) => index !== indexToRemove)]);
     props.filterTable([...tags.filter((_, index) => index !== indexToRemove)]);
   };
-  // const seeSuggestions = suggestions => {
+
   const onBackBtn = () => {
     //debugger;
     let lastIndex = tags.length;
@@ -19,35 +18,40 @@ const TagsInput = props => {
     setTags(newTags);
     props.filterTable(newTags);
   };
-  // }
-  let firstPartOfTag="";
-  const addTag = tag => {
-    //debugger;
-    if (tag !== "") {  
-      debugger;   
-      let smthing = Object.keys(suggestions.doubleLayerSuggestions);
-       if (Object.keys(suggestions.doubleLayerSuggestions).includes(tag)) {
-           firstPartOfTag = tag +": ";
-      }     
-      else if (suggestions.singleLayerSuggestions.includes(tag)) {
+
+  let firstPartOfTag = "";
+  let delimiter = ":";
+  let doubleLayerSuggestionKeys = Object.keys(suggestions.doubleLayerSuggestions);
+  const addTag = (tag,isFreeText) => {
+    if (tag !== "" ) {
+      debugger;
+      if (!isFreeText) {
+        //if single layer suggestion was chosen
+        if (suggestions.singleLayerSuggestions.includes(tag)) {
+          setTags([...tags, tag]);
+          props.filterTable([...tags, tag]);
+          tag = "";
+        }
+        //if the key of double layer suggestion was chosen
+        else if (doubleLayerSuggestionKeys.some( suggestion => suggestion === tag)) {
+          firstPartOfTag = tag;
+        }
+        //if the value of doubleLayer suggestion was chosen
+        else if (
+          suggestions.doubleLayerSuggestions[firstPartOfTag].includes(tag)
+        ) {
+          setTags([...tags, firstPartOfTag + delimiter + tag]);
+          props.filterTable([...tags, tag]);
+          tag = "";
+          firstPartOfTag = "";
+        }
+      }
+      //free text tag
+      else {
         setTags([...tags, tag]);
         props.filterTable([...tags, tag]);
         tag = "";
-      } else {
-        //free text search
-        if (firstPartOfTag !== "") {
-          setTags([...tags, firstPartOfTag + tag]);
-          props.filterTable([...tags, tag]);
-          tag = "";
-          firstPartOfTag="";
-        }
-        else{
-          setTags([...tags,tag]);
-          props.filterTable([...tags, tag]);
-          tag = "";
-        }
       }
-      // props.selectedTags([...tags, event.target.value]);
     }
   };
   return (
@@ -56,8 +60,7 @@ const TagsInput = props => {
         <ul id="tags">
           {tags.map((tag, index) => (
             <li key={index} className="tag">
-              {/* <span className="tag-title"> {doubleLayerTagFirstSuggestion}</span> */}
-              <span className="tag-title">{'#' + tag}</span>
+              <span className="tag-title">{"#" + tag}</span>
               <span
                 className="tag-close-icon"
                 onClick={() => removeTags(index)}

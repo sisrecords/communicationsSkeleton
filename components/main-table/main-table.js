@@ -47,20 +47,20 @@ const tableIcons = {
 export default function MaterialTableDemo({ data }) {
   const [state, setState] = React.useState({
     columns: [
-      { title: "מס׳", field: "surname" },
-      { title: "תיאור", field: "surname" },
-      { title: "פרוייקט", field: "birthYear" },
-      { title: "מס ספק", field: "birthYear" },
-      { title: "שם ספק", field: "surname" },
-      { title: "סוג", field: "surname" },
-      { title: "סטטוס", field: "surname" },
-      { title: "גוף דורש", field: "surname" },
-      { title: "סיווג", field: "surname" },
-      { title: "מחלקה", field: "surname" },
-      { title: "ענף", field: "surname" },
-      { title: "מטבע", field: "surname" },
-      { title: "סכום", field: "surname" },
-      { title: "ימים שנותרו", field: "name" }
+      { title: "מס׳", field: "id" },
+      { title: "תיאור", field: "description" },
+      { title: "פרוייקט", field: "project" },
+      { title: "מס ספק", field: "supplierId" },
+      { title: "שם ספק", field: "supplierName" },
+      { title: "סוג", field: "kind" },
+      { title: "סטטוס", field: "status" },
+      { title: "גוף דורש", field: "oranzation" },
+      { title: "סיווג", field: "classification" },
+      { title: "מחלקה", field: "department" },
+      { title: "ענף", field: "superDepartment" },
+      { title: "מטבע", field: "currency" },
+      { title: "סכום", field: "amount" },
+      { title: "ימים שנותרו", field: "daysLeft" },
     ]
   });
   return (

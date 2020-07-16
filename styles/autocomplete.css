@@ -23,7 +23,7 @@ input {
     /* max-height: 143px; */
     /* overflow-y: auto; */
     overflow: auto;
-    padding-left: 0;
+    padding-right: 0;
     width: calc(300px + 1rem);  
     position: absolute;
     z-index: 100;

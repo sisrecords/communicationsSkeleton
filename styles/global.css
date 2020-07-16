@@ -40,6 +40,9 @@ button{
 .MuiToolbar-regular{
   min-height: 0 !important;
 }
+.MuiTableCell-root{
+  direction: ltr !important;
+}
 
 #adam{
   background-color: red;

@@ -20,25 +20,34 @@ const TagsInput = props => {
     props.filterTable(newTags);
   };
   // }
+  debugger;
+  let firstPartOfTag="";
   const addTag = tag => {
     //debugger;
-    if (tag !== "") {         
-    //    if (Object.keys(suggestions.doubleLayerSuggestions).includes(tag)) {
-    //     console.log("im here");
-        
-    //    }     
-      if (suggestions.singleLayerSuggestions.includes(tag)) {
-        tag = "#" + tag;
+    if (tag !== "") {  
+      debugger;       
+       if (Object.keys(suggestions.doubleLayerSuggestions).includes(tag)) {
+           firstPartOfTag = tag +": ";
+      }     
+      else if (suggestions.singleLayerSuggestions.includes(tag)) {
         setTags([...tags, tag]);
-        tag.substring(1);
         props.filterTable([...tags, tag]);
+        tag = "";
       } else {
         //free text search
-        setTags([...tags, tag]);
-        props.filterTable([...tags, tag]);
+        if (firstPartOfTag !== "") {
+          setTags([...tags, firstPartOfTag + tag]);
+          props.filterTable([...tags, tag]);
+          tag = "";
+          firstPartOfTag="";
+        }
+        else{
+          setTags([...tags,tag]);
+          props.filterTable([...tags, tag]);
+          tag = "";
+        }
       }
       // props.selectedTags([...tags, event.target.value]);
-      tag = "";
     }
   };
   return (
@@ -47,7 +56,8 @@ const TagsInput = props => {
         <ul id="tags">
           {tags.map((tag, index) => (
             <li key={index} className="tag">
-              <span className="tag-title">{tag}</span>
+              {/* <span className="tag-title"> {doubleLayerTagFirstSuggestion}</span> */}
+              <span className="tag-title">{'#' + tag}</span>
               <span
                 className="tag-close-icon"
                 onClick={() => removeTags(index)}

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 class Autocomplete extends Component {
   static propTypes = {
-    singleLayerSuggestions: PropTypes.instanceOf(Array)    
+    singleLayerSuggestions: PropTypes.instanceOf(Array)
   };
 
   static defaultProps = {
@@ -27,41 +27,41 @@ class Autocomplete extends Component {
 
   // Event fired when the input value is changed
   onChange = e => {
-    const { singleLayerSuggestions,doubleLayerSuggestions } = this.props.suggestions;
-    
-    debugger;
+    const {
+      singleLayerSuggestions,
+      doubleLayerSuggestions
+    } = this.props.suggestions;
+
     let userInput = e.currentTarget.value;
-    if (userInput.startsWith('#')) {
+    if (userInput.startsWith("#")) {
       userInput = userInput.substring(1);
-        const singleLayerFilteredSuggestions = singleLayerSuggestions.filter(
-          suggestion =>
-            suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-        );
-        const doubleLayerFilteredSuggestions = Object.keys(doubleLayerSuggestions).filter(
-          suggestion =>
-            suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-        );
-        const filteredSuggestions =  singleLayerFilteredSuggestions.concat(doubleLayerFilteredSuggestions);
-        this.setState({
-          activeSuggestion: 0,
-          filteredSuggestions:filteredSuggestions,
-          showSuggestions: true,
-          userInput: e.currentTarget.value
-        });
-      }else{
-        this.setState({
-          activeSuggestion: 0,
-          filteredSuggestions:[],
-          showSuggestions: true,
-          userInput: e.currentTarget.value
-        });
-      }
-    // debugger;
-    // Filter our suggestions that don't contain the user's input
-
-
-    // Update the user input and filtered suggestions, reset the active
-    // suggestion and make sure the suggestions are shown
+      const singleLayerFilteredSuggestions = singleLayerSuggestions.filter(
+        suggestion =>
+          suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+      );
+      const doubleLayerFilteredSuggestions = Object.keys(
+        doubleLayerSuggestions
+      ).filter(
+        suggestion =>
+          suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+      );
+      const filteredSuggestions = singleLayerFilteredSuggestions.concat(
+        doubleLayerFilteredSuggestions
+      );
+      this.setState({
+        activeSuggestion: 0,
+        filteredSuggestions: filteredSuggestions,
+        showSuggestions: true,
+        userInput: e.currentTarget.value
+      });
+    } else {
+      this.setState({
+        activeSuggestion: 0,
+        filteredSuggestions: [],
+        showSuggestions: true,
+        userInput: e.currentTarget.value
+      });
+    }
   };
 
   //   Event fired when the user clicks on a suggestion
@@ -86,17 +86,21 @@ class Autocomplete extends Component {
     }
     // User pressed the enter key, update the input and close the
     // suggestions
-    debugger;
     if (e.keyCode === 13) {
-      if (Object.keys(doubleLayerSuggestions).includes(filteredSuggestions[activeSuggestion])) {
+      if (
+        Object.keys(doubleLayerSuggestions).includes(
+          filteredSuggestions[activeSuggestion]
+        )
+      ) {
         this.setState({
-          activeSuggestion:0,
-          filteredSuggestions:doubleLayerSuggestions[filteredSuggestions[activeSuggestion]],
+          activeSuggestion: 0,
+          filteredSuggestions:
+            doubleLayerSuggestions[filteredSuggestions[activeSuggestion]],
           showSuggestions: true,
-          userInput:"#"
-        })
-        // console.log(doubleLayerSuggestions["orel1"]);    
-      }else{
+          userInput: "#"
+        });
+        // console.log(doubleLayerSuggestions["orel1"]);
+      } else {
         this.setState({
           activeSuggestion: 0,
           filteredSuggestions: [],

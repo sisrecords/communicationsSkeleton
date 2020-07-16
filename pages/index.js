@@ -44,7 +44,6 @@ const Home = props => {
           <TagsInput
             tags={props.tagsDataProp}
             suggestions={props.suggestionsDataProp}
-            //doubleLayerSuggestions = {props.doubleLayerSuggestionsDataProp}
             filterTable={props.onInitMainTable}
           ></TagsInput>
         </div>

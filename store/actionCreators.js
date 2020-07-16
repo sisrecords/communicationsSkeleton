@@ -118,7 +118,7 @@ export const initMainTable = tags => {
       response = response.filter(singleObjectInResponse => {
         for (var key in singleObjectInResponse) {
           if (typeof singleObjectInResponse[key] == "string") {
-            if (singleObjectInResponse[key].includes(tag.toLowerCase())) {
+            if (singleObjectInResponse[key].toLowerCase().includes(tag.toLowerCase())) {
               return true;
             }
           }

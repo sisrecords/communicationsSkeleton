@@ -46,13 +46,18 @@ button{
 .MuiPaper-elevation2{
   height: 100%;
 }
-/* .Component-horizontalScrollContainer-12{
+.Component-horizontalScrollContainer-12{
   height: 92%;
 }
-
+.Component-horizontalScrollContainer-12 > div > div {
+  height: 100%;
+}
+.Component-horizontalScrollContainer-12 > div {
+  height: 100%;
+}
 .MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded{
   height: 92%;
-} */
+}
 #adam{
   background-color: red;
   position: absolute;

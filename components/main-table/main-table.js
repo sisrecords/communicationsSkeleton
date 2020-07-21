@@ -3,7 +3,6 @@ import MaterialTable from "material-table";
 import TablePagination from "@material-ui/core/TablePagination";
 import { forwardRef } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
-
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import Check from "@material-ui/icons/Check";
@@ -19,7 +18,8 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-
+import { useRouter } from 'next/router'
+import SingleRequest from '../../pages/singleRequest/[id]'
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
   Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -45,6 +45,7 @@ const tableIcons = {
 };
 
 export default function MaterialTableDemo({ data }) {
+  const router = useRouter();
   const [state, setState] = React.useState({
     columns: [
       { title: "מס׳", field: "id" },
@@ -71,7 +72,7 @@ export default function MaterialTableDemo({ data }) {
         console.log(`Page Size: ${pageSize}`);
 
         return (
-          <div
+          <div className="adam"
             style={{
               height: `${height-50}px`,
               width: `${width}px`,
@@ -80,8 +81,24 @@ export default function MaterialTableDemo({ data }) {
             }}
           >
             <MaterialTable
+            // actions = {[
+            //   {
+            //     hidden:true,
+            //     icon: "asd",
+            //     //iconProps: { style: { fontSize: "14px", color: "green" } },
+            //     //tooltip: "Save User",
+            //     onClick: (event, rowData) => alert("You saved " + rowData.name)
+            //   }
+            // ]}
               columns={state.columns}
               data={data}
+              onRowClick={(rowData) =>
+                {
+                  let rowIndex =rowData.currentTarget.attributes.index.value;
+                  <SingleRequest data={data[rowIndex]}></SingleRequest>
+                  router.push(`/singleRequest/${data[rowIndex].id}`)
+                }
+                }
               options={{
                 showTitle: false,
                 search: false,

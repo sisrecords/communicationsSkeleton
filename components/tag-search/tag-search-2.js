@@ -24,7 +24,7 @@ const TagsInput = props => {
   let doubleLayerSuggestionKeys = Object.keys(suggestions.doubleLayerSuggestions);
   const addTag = (tag,isFreeText) => {
     if (tag !== "" ) {
-      debugger;
+      //debugger;
       if (!isFreeText) {
         //if single layer suggestion was chosen
         if (suggestions.singleLayerSuggestions.includes(tag)) {

@@ -97,7 +97,6 @@ const mapStateToProps = state => {
     mainTableDataProp: state.mainTableReducer.mainTableData,
     tagsDataProp: state.tagsReducer.tags,
     suggestionsDataProp: state.tagsReducer.suggestions,
-    //doubleLayerSuggestionsDataProp: state.tagsReducer.suggestions.doubleLayerSuggestions
   };
 };
 

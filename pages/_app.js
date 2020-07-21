@@ -1,4 +1,5 @@
 import '../styles/global.css'
+import '../styles/singleRequest.css'
 import '../styles/tag-search.scss';
 import '../styles/autocomplete.css';
 import { Provider } from 'react-redux';

@@ -119,7 +119,6 @@ export const initMainTable = tags => {
     let delimiter = ":";
     tags.forEach(tag => {
       if (tag.indexOf(delimiter > -1)) {
-        debugger;
           let untilDelimiterIndex = tag.indexOf(':');
           //the key of the tag
           let keyTag = tag.slice(0,untilDelimiterIndex);

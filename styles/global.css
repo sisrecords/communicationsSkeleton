@@ -10,7 +10,6 @@ body {
   height: 100%;
 }
 #__next{
-
   height: 100%;
 }
 * {
@@ -26,22 +25,13 @@ a {
 a:hover {
   text-decoration: underline;
 }
-/* 
-img {
-  max-width: 100%;
-  display: block;
-} */
-/* 
-button{
-  width:30px;
-  height: 20px;
-} */
 
 .MuiToolbar-regular{
   min-height: 0 !important;
 }
 .MuiTableCell-root{
   direction: ltr !important;
+  line-height: 1 !important;
 }
 .MuiPaper-elevation2{
   height: 100%;

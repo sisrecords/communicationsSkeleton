@@ -1,19 +1,18 @@
-html,
-body {
+html, body {
   /* direction: rtl; */
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   /* line-height: 1.6; */
   font-size: 18px;
   height: 100%;
 }
-#__next{
+
+#__next {
   height: 100%;
 }
+
 * {
-  
   box-sizing: border-box;
 }
 
@@ -26,33 +25,51 @@ a:hover {
   text-decoration: underline;
 }
 
-.MuiToolbar-regular{
+/* table props */
+
+.MuiToolbar-regular {
   min-height: 0 !important;
 }
-.MuiTableCell-root{
+
+.MuiTableCell-root {
   direction: ltr !important;
   line-height: 1 !important;
 }
-.MuiPaper-elevation2{
+
+.MuiPaper-elevation2 {
   height: 100%;
 }
-.Component-horizontalScrollContainer-12{
+
+.Component-horizontalScrollContainer-12 {
   height: 92%;
 }
-.Component-horizontalScrollContainer-12 > div > div {
+
+.Component-horizontalScrollContainer-12>div>div {
   height: 100%;
 }
-.Component-horizontalScrollContainer-12 > div {
+
+.Component-horizontalScrollContainer-12>div {
   height: 100%;
 }
-.MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded{
+
+.MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded {
   height: 92%;
 }
-#adam{
-  background-color: red;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 300px;
+
+/* date picker props */
+
+.MuiInputLabel-formControl {
+  right: 0 !important;
+  width: 100% !important;
+}
+
+.MuiFormControl-marginNormal {
+  border: 1px solid black !important;
+  border-radius: 10px !important;
+  padding: 5px !important;
+  width: 45% !important;
+}
+
+.MuiInputLabel-shrink{
+  transform-origin: center !important;
 }

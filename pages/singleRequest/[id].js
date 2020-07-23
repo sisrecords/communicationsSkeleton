@@ -1,9 +1,15 @@
 import { useRouter } from "next/router";
-import { initialState } from "../../store/reducers/mainTableReducer";
-import { useState } from "react";
 import { connect } from "react-redux";
-import mainTableReducer from "../../store/reducers/mainTableReducer";
-import * as actions from "../../store/actionCreators";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import Switch from "@material-ui/core/Switch";
+import { withStyles } from "@material-ui/core/styles";
+import { green } from "@material-ui/core/colors";
+import SwitchComponent from "../../components/switch-component/switch-component";
+import DatePickerComponent from "../../components/date-picker/date-picker-component";
 
 export function SingleRequest(props) {
   const router = useRouter();
@@ -12,12 +18,48 @@ export function SingleRequest(props) {
       props.mainTableDataProp !== undefined &&
       router.query.id !== undefined
     ) {
-      let smthing = props.mainTableDataProp.filter(
+      let rowSelected = props.mainTableDataProp.filter(
         row => row.id == router.query.id
       );
-      return smthing[0][objectProperty];
+      return rowSelected[0][objectProperty];
     }
   };
+
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+    checkedC: true
+  });
+
+  const handleChange = event => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+  //#region datepicker consts
+  const [selectedStartDate, setSelectedStartDate] = React.useState();
+  const [selectedEndDate, setSelectedEndDate] = React.useState();
+
+  const [
+    selectedActualStartDate,
+    setSelectedActualStartDate
+  ] = React.useState();
+  const [selectedActualEndDate, setSelectedActualEndDate] = React.useState();
+
+  const handleDateChangeStart = date => {
+    setSelectedStartDate(date);
+  };
+  const handleDateChangeEnd = date => {
+    setSelectedEndDate(date);
+  };
+
+  const handleActualDateChangeStart = date => {
+    setSelectedActualStartDate(date);
+  };
+  const handleActualDateChangeEnd = date => {
+    setSelectedActualEndDate(date);
+  };
+  //#endregion
+
   return (
     <form>
       <div className="background-headline"> פרטי תיק</div>
@@ -35,8 +77,8 @@ export function SingleRequest(props) {
           </div>
           <div className="label-input-container">
             <label>ענף</label>
-            <select name="cars" id="cars">
-              <option value="volvo">Volvo</option>
+            <select value="asdads" name="cars" id="cars">
+              <option value="volvo">ענף</option>
               <option value="saab">Saab</option>
               <option value="opel">Opel</option>
               <option value="audi">Audi</option>
@@ -47,7 +89,7 @@ export function SingleRequest(props) {
               סוג תיק
               <br></br>
               <select name="cars" id="cars">
-                <option value="volvo">Volvo</option>
+                <option value="volvo">סוג תיק</option>
                 <option value="saab">Saab</option>
                 <option value="opel">Opel</option>
                 <option value="audi">Audi</option>
@@ -56,7 +98,7 @@ export function SingleRequest(props) {
             <label className="label-half">
               סיווג
               <select name="cars" id="cars">
-                <option value="volvo">Volvo</option>
+                <option value="volvo">סיווג</option>
                 <option value="saab">Saab</option>
                 <option value="opel">Opel</option>
                 <option value="audi">Audi</option>
@@ -65,10 +107,10 @@ export function SingleRequest(props) {
           </div>
           <label>גוף דורש</label>
           <div className="images-conitaner">
-            <img src="/images/mafat.jpg"></img>
+            <img src="/images/mafat.jpg" 
+            ></img>
             <img
               src="/images/Israel-Defense-Forces.svg.png"
-              style={{ height: "100px", marginTop: "20px" }}
             ></img>
           </div>
           <div className="label-input-container">
@@ -79,6 +121,7 @@ export function SingleRequest(props) {
               id="project"
               name="project"
               value={getObjectPropValue("project")}
+              readOnly="true"
             ></input>
           </div>
           <div className="label-input-double-container">
@@ -91,6 +134,7 @@ export function SingleRequest(props) {
               id="project"
               name="project"
               value={getObjectPropValue("amount")}
+              readOnly="true"
             ></input>
             <div
               className="label-input-double-container"
@@ -101,9 +145,59 @@ export function SingleRequest(props) {
             </div>
           </div>
         </div>
-        <div className="half-form-container"></div>
-      
-      
+        <div className="half-form-container">
+          <div className="date-picker-container">
+            <DatePickerComponent label={"מועד התחלה "}></DatePickerComponent>
+            <DatePickerComponent label={"מועד סיום "}></DatePickerComponent>
+          </div>
+          <div className="date-picker-container">
+            <DatePickerComponent
+              label={"מועד התחלה בפועל"}
+            ></DatePickerComponent>
+            <DatePickerComponent
+              label={"מועד סיום בפועל"}
+            ></DatePickerComponent>
+          </div>
+          <div className="label-input-container">
+            <label>
+              תכונות נוספות
+              <select name="cars" id="cars">
+                <option value="sresearch">מחקרים בד״ס</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+              </select>
+            </label>
+          </div>
+          <div className="label-input-container">
+            <label className="label-half">
+              <select name="cars" id="cars">
+                <option value="cs&ts">cs&ts</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+              </select>
+            </label>
+          </div>
+          <div className="switch-container">
+            <SwitchComponent label="תיק מימוש תמורת GTG"></SwitchComponent>
+          </div>
+          <div className="switch-container">
+            <SwitchComponent label="מכיל תקציב מת״ט"></SwitchComponent>
+          </div>
+          <div className="switch-container">
+            <SwitchComponent label="תיק GTG"></SwitchComponent>
+          </div>
+          <div className="switch-container">
+            <SwitchComponent label="אור ירוק"></SwitchComponent>
+          </div>
+          <div className="switch-container">
+            <SwitchComponent label="תלמ״י"></SwitchComponent>
+          </div>
+          <div className="switch-container">
+            <SwitchComponent label="רכוש בהול"></SwitchComponent>
+          </div>
+        </div>
       </div>
     </form>
   );
@@ -116,9 +210,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    //onInitMainTable: tags => dispatch(actions.initMainTable(tags))
-  };
+  return {};
 };
 
 export default connect(

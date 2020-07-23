@@ -15,6 +15,7 @@ import TagsInput from "../components/tag-search/tag-search-2";
 const Home = props => {
   return (
     <div className={utilStyles.gridContainer}>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       <div className={utilStyles.notificationComponent}>
         <NotificationComponent
           key="2"

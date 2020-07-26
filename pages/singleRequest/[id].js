@@ -13,6 +13,7 @@ import DatePickerComponent from "../../components/date-picker/date-picker-compon
 
 export function SingleRequest(props) {
   const router = useRouter();
+
   const getObjectPropValue = objectProperty => {
     if (
       props.mainTableDataProp !== undefined &&
@@ -24,41 +25,6 @@ export function SingleRequest(props) {
       return rowSelected[0][objectProperty];
     }
   };
-
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedC: true
-  });
-
-  const handleChange = event => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
-
-  //#region datepicker consts
-  const [selectedStartDate, setSelectedStartDate] = React.useState();
-  const [selectedEndDate, setSelectedEndDate] = React.useState();
-
-  const [
-    selectedActualStartDate,
-    setSelectedActualStartDate
-  ] = React.useState();
-  const [selectedActualEndDate, setSelectedActualEndDate] = React.useState();
-
-  const handleDateChangeStart = date => {
-    setSelectedStartDate(date);
-  };
-  const handleDateChangeEnd = date => {
-    setSelectedEndDate(date);
-  };
-
-  const handleActualDateChangeStart = date => {
-    setSelectedActualStartDate(date);
-  };
-  const handleActualDateChangeEnd = date => {
-    setSelectedActualEndDate(date);
-  };
-  //#endregion
 
   return (
     <form>

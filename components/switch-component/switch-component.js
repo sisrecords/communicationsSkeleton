@@ -1,28 +1,5 @@
-// import React from 'react';
-// import Switch from '@material-ui/core/Switch';
-
-// export default function SwitchComponent() {
-//   const [state, setState] = React.useState({
-//     checkedA: true,
-//     checkedB: true,
-//   });
-
-//   const handleChange = (event) => {
-//     setState({ ...state, [event.target.name]: event.target.checked });
-//   };
-
-//   return (
-//     <div>
-//       <Switch
-//         checked={state.checkedB}
-//         onChange={handleChange}
-//         color="primary"
-//         name="checkedB"
-//         inputProps={{ 'aria-label': 'primary checkbox' }}
-//       />
-//     </div>
-//   );
-// }
+import { withStyles } from '@material-ui/core/styles';
+import { green, grey } from '@material-ui/core/colors';
 
 import React from 'react';
 import Switch from '@material-ui/core/Switch';
@@ -31,12 +8,25 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 export default function SwitchComponent({label}) {
-  return (
+    const GreenSwitch = withStyles({
+        switchBase: {
+          color: grey[300],
+          '&$checked': {
+            color: green["A700"],
+          },
+          '&$checked + $track': {
+            backgroundColor: green[500],
+          },
+        },
+        checked: {},
+        track: {},
+      })(Switch);
+    return (
     <FormControl component="fieldset">
       <FormGroup aria-label="position" row> 
         <FormControlLabel
           value="end"
-          control={<Switch color="primary" />}
+          control={<GreenSwitch/>}
           label={label}
           labelPlacement="end"
         />

@@ -18,8 +18,8 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import { useRouter } from 'next/router'
-import SingleRequest from '../../pages/singleRequest/[id]'
+import { useRouter } from "next/router";
+import SingleRequest from "../../pages/singleRequest/[id]";
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
   Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -61,7 +61,7 @@ export default function MaterialTableDemo({ data }) {
       { title: "ענף", field: "superDepartment" },
       { title: "מטבע", field: "currency" },
       { title: "סכום", field: "amount" },
-      { title: "ימים שנותרו", field: "daysLeft" },
+      { title: "ימים שנותרו", field: "daysLeft" }
     ]
   });
   return (
@@ -72,33 +72,31 @@ export default function MaterialTableDemo({ data }) {
         console.log(`Page Size: ${pageSize}`);
 
         return (
-          <div className="adam"
+          <div
+            className="adam"
             style={{
-              height: `${height-50}px`,
+              height: `${height - 50}px`,
               width: `${width}px`,
               overflowY: "auto",
               direction: "rtl"
             }}
           >
             <MaterialTable
-            // actions = {[
-            //   {
-            //     hidden:true,
-            //     icon: "asd",
-            //     //iconProps: { style: { fontSize: "14px", color: "green" } },
-            //     //tooltip: "Save User",
-            //     onClick: (event, rowData) => alert("You saved " + rowData.name)
-            //   }
-            // ]}
+              // actions = {[
+              //   {
+              //     hidden:true,
+              //     icon: "asd",
+              //     //iconProps: { style: { fontSize: "14px", color: "green" } },
+              //     //tooltip: "Save User",
+              //     onClick: (event, rowData) => alert("You saved " + rowData.name)
+              //   }
+              // ]}
               columns={state.columns}
               data={data}
-              onRowClick={(rowData) =>
-                {
-                  let rowIndex =rowData.currentTarget.attributes.index.value;
-                  <SingleRequest data={data[rowIndex]}></SingleRequest>
-                  router.push(`/singleRequest/${data[rowIndex].id}`)
-                }
-                }
+              onRowClick={rowData => {
+                let id = rowData.currentTarget.cells[0].innerHTML;
+                router.push(`/singleRequest/${id}`);
+              }}
               options={{
                 showTitle: false,
                 search: false,
@@ -151,7 +149,6 @@ export default function MaterialTableDemo({ data }) {
     //     />
   );
 }
-
 //   editable={{
 //     onRowAdd: (newData) =>
 //       new Promise((resolve) => {

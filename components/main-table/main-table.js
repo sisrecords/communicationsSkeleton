@@ -55,7 +55,7 @@ export default function MaterialTableDemo({ data }) {
       { title: "שם ספק", field: "supplierName" },
       { title: "סוג", field: "kind" },
       { title: "סטטוס", field: "status" },
-      { title: "גוף דורש", field: "oranzation" },
+      { title: "גוף דורש", field: "organization" },
       { title: "סיווג", field: "classification" },
       { title: "מחלקה", field: "department" },
       { title: "ענף", field: "superDepartment" },

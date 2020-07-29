@@ -29,6 +29,7 @@
     "react-dom": "16.13.1",
     "react-minimal-pie-chart": "^8.0.1",
     "react-redux": "^7.2.0",
+    "react-step-progress-bar": "^1.0.3",
     "react-switch": "^5.0.1",
     "react-tag-autocomplete": "^6.0.0-beta.6",
     "react-tag-input-custom-search": "^5.9.26",

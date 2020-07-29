@@ -52,7 +52,7 @@ a:hover {
   height: 100%;
 }
 
-.MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded {
+.MuiPaper-root .MuiPaper-elevation2 .MuiPaper-rounded {
   height: 92%;
 }
 
@@ -73,3 +73,26 @@ a:hover {
 .MuiInputLabel-shrink{
   transform-origin: center !important;
 }
+
+
+/* progress stepper */
+.MuiStepContent-root{
+    position: fixed;
+    /* transition: none !important; */
+     margin-left: 0px !important;
+     padding-left: 0px !important;
+     padding-right: 0px !important;
+    margin-top:0px !important;
+    border-left: none !important;
+    left: 53px;
+    bottom: 10px;
+    z-index: 100;
+    direction: rtl;
+}
+.MuiCollapse-container {
+  transition: none !important;
+}
+.progress-bar-container .MuiPaper-root {
+  background-color: inherit !important;
+}
+

@@ -9,7 +9,7 @@ export const CarouselComponent = props => {
   var sliderArray, slideRef1, slideRef2, slideRef3, slideRef4, slideRef5;
   var labelArray, labelRef1, labelRef2, labelRef3, labelRef4, labelRef5;
   
-  const back = () => {
+  const moveLeft = () => {
     sliderArray = [slideRef1, slideRef2, slideRef3, slideRef4, slideRef5];
     for (let index = 0; index < sliderArray.length; index++) {
       if (sliderArray[index].checked === true) {
@@ -27,8 +27,7 @@ export const CarouselComponent = props => {
     }
   };
 
-  const forward = () => {
-    debugger;
+  const moveRight = () => {
     sliderArray = [slideRef1, slideRef2, slideRef3, slideRef4, slideRef5];
     for (let index = 0; index < sliderArray.length; index++) {
       if (sliderArray[index].checked === true) {
@@ -45,6 +44,7 @@ export const CarouselComponent = props => {
       }
     }
   };
+
 const [checked, setCheckBox] = React.useState(false);
 const setBorderAndCheckBoxchecked = (labelRef) =>{
     if (checked === false) {
@@ -57,12 +57,12 @@ const setBorderAndCheckBoxchecked = (labelRef) =>{
 }
   return (
     <section id="slider">
-      <div className="arrow-back-icon">
-        <ArrowBackIosRoundedIcon onClick={back}></ArrowBackIosRoundedIcon>
+      <div className="arrow-icon arrow-icon-back">
+        <ArrowBackIosRoundedIcon onClick={moveLeft}></ArrowBackIosRoundedIcon>
       </div>
-      <div className="arrow-forward-icon">
+      <div className="arrow-icon arrow-icon-forward">
         <ArrowForwardIosRoundedIcon
-          onClick={forward}
+          onClick={moveRight}
         ></ArrowForwardIosRoundedIcon>
       </div>
       <input
@@ -226,7 +226,6 @@ const setBorderAndCheckBoxchecked = (labelRef) =>{
               <GreenCheckbox
                  checked={checked}
                  onChange={() => setBorderAndCheckBoxchecked(labelRef3)}
-                 color="primary"
               ></GreenCheckbox>
             </Button>
           </div>
@@ -271,7 +270,6 @@ const setBorderAndCheckBoxchecked = (labelRef) =>{
           <div className="carousel-btn">
             <Button variant="contained">
               בחר שורת משימה
-              <Checkbox></Checkbox>
             </Button>
           </div>
         </div>
@@ -486,4 +484,4 @@ const GreenCheckbox = withStyles({
       },
     },
     checked: {},
-  })((props) => <Checkbox color="default" {...props} />);
+  })((props) => <Checkbox key={123} color="default" {...props} />);

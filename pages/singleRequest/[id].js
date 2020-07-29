@@ -1,18 +1,12 @@
 import { useRouter } from "next/router";
 import { connect } from "react-redux";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
-import Switch from "@material-ui/core/Switch";
-import { withStyles } from "@material-ui/core/styles";
-import { green } from "@material-ui/core/colors";
 import SwitchComponent from "../../components/switch-component/switch-component";
 import DatePickerComponent from "../../components/date-picker/date-picker-component";
-import Button from "@material-ui/core/Button";
 import React, { useState } from "react";
 import { CarouselComponent } from "../../components/carousel-component/carousel-component";
+import  VerticalLinearStepper  from "../../components/progress-bar/progress-bar";
+
+
 export function SingleRequest(props) {
   const router = useRouter();
   var selectedRowObject;
@@ -51,11 +45,23 @@ export function SingleRequest(props) {
   };
 
   const goToNextPage = () => {
-    setCurrentPageNumber(currentPageNumber + 1);
+    if (currentPageNumber != 8) {
+      setCurrentPageNumber(currentPageNumber + 1);
+    }
   };
+  const goToPreviousPage = () => {
+    if (currentPageNumber !=0) {
+      setCurrentPageNumber(currentPageNumber -1 );
+    }
+  };
+  
   return (
     <div>
+      <div className="progress-bar-container">
+      <VerticalLinearStepper key={0} goToPreviousPage= {goToPreviousPage} goToNextPage ={goToNextPage} ></VerticalLinearStepper>
+      </div>
       <form>
+        
         <div
           className="form-container"
           style={displayForm(2) ? {} : { display: "none" }}
@@ -65,6 +71,7 @@ export function SingleRequest(props) {
             <div className="label-input-container">
               <label>תיאור</label>
               <input
+                readOnly={true}
                 className="input-large"
                 type="text"
                 id="description"
@@ -315,9 +322,9 @@ export function SingleRequest(props) {
           </div>
         </div>
         <div className="continue-btn">
-          <Button onClick={goToNextPage} variant="contained" color="primary">
+          {/* <Button onClick={goToNextPage} variant="contained" color="primary">
             המשך
-          </Button>
+          </Button> */}
         </div>
       </form>
       <div style={displayForm(1) ? {} : { display: "none" }}>

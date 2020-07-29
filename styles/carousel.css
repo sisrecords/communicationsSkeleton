@@ -176,31 +176,28 @@
 
  .carousel-btn>button {
      font-size: 1vw;
+     height: 3vw;
  }
 /* arrows */
 
- .arrow-back-icon{
+ .arrow-icon{
     transition: 0.4s ease;
      cursor: pointer;
     position: absolute;
-    left:5%;
     top: 40%;
+    padding-top: 3px;
  }
- .arrow-back-icon > svg {
+ .arrow-icon > svg {
     font-size: 5vw;
 } 
- .arrow-forward-icon{
-    transition: 0.4s ease;
-    cursor: pointer;
-    position: absolute;
+ .arrow-icon-forward{
     right:5%;
-    top: 40%;
  }
- .arrow-forward-icon > svg {
-     font-size: 5vw;
- } 
+.arrow-icon-back{
+    left: 5%;
+}
 
- .arrow-back-icon:hover, .arrow-forward-icon:hover {
+ .arrow-icon:hover {
     background-color: rgba(0,0,0,0.2);
     border-radius: 50%;
   }

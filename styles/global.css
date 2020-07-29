@@ -95,4 +95,6 @@ a:hover {
 .progress-bar-container .MuiPaper-root {
   background-color: inherit !important;
 }
-
+.MuiCollapse-wrapperInner > div {
+  margin-bottom: 0px !important;
+}
